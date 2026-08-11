@@ -118,20 +118,38 @@
     <!-- Top Kinetic Ticker Banner -->
     <div class="footer-ticker border-bottom border-dark border-opacity-25 pb-3 mb-5">
         <div class="footer-ticker-track">
+            <!-- Set 1 -->
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-bolt me-2"></i> 24/7 EMERGENCY SPARKY</span>
             <span class="fs-4 text-dark opacity-50">•</span>
-            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-solar-panel me-2"></i> ORAN PARK SOLAR SPECIALISTS</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-solar-panel me-2"></i> SYDNEY SOLAR SPECIALISTS</span>
             <span class="fs-4 text-dark opacity-50">•</span>
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-charging-station me-2"></i> EV CHARGER INSTALLATIONS</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-sliders me-2"></i> SWITCHBOARD &amp; SAFETY UPGRADES</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-lightbulb me-2"></i> LED &amp; ARCHITECTURAL LIGHTING</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-building-user me-2"></i> COMMERCIAL FITOUTS</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-house me-2"></i> RESIDENTIAL REWIRING</span>
             <span class="fs-4 text-dark opacity-50">•</span>
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-shield-halved me-2"></i> LICENSED NSW ELECTRICIANS</span>
             <span class="fs-4 text-dark opacity-50">•</span>
+
             <!-- Duplicate Set for Continuous Loop -->
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-bolt me-2"></i> 24/7 EMERGENCY SPARKY</span>
             <span class="fs-4 text-dark opacity-50">•</span>
-            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-solar-panel me-2"></i> ORAN PARK SOLAR SPECIALISTS</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-solar-panel me-2"></i> SYDNEY SOLAR SPECIALISTS</span>
             <span class="fs-4 text-dark opacity-50">•</span>
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-charging-station me-2"></i> EV CHARGER INSTALLATIONS</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-sliders me-2"></i> SWITCHBOARD &amp; SAFETY UPGRADES</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-lightbulb me-2"></i> LED &amp; ARCHITECTURAL LIGHTING</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-building-user me-2"></i> COMMERCIAL FITOUTS</span>
+            <span class="fs-4 text-dark opacity-50">•</span>
+            <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-house-plug me-2"></i> RESIDENTIAL REWIRING</span>
             <span class="fs-4 text-dark opacity-50">•</span>
             <span class="fw-black text-uppercase tracking-tight fs-4 text-dark"><i class="fas fa-shield-halved me-2"></i> LICENSED NSW ELECTRICIANS</span>
             <span class="fs-4 text-dark opacity-50">•</span>
@@ -145,14 +163,14 @@
             <div class="col-lg-8">
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-dark text-white extra-small fw-semibold text-uppercase tracking-wider mb-3">
                     <span class="p-1 rounded-circle bg-accent"></span>
-                    <span>Oran Park & Western Sydney</span>
+                    <span>Sydney's Top-notch Electricians</span>
                 </div>
                 <h1 class="footer-title-huge text-dark m-0 gsap-reveal-title">
                     <a href="/index.php" class="text-dark text-decoration-none">24/7 SPARKY<span class="text-white">.</span></a>
                 </h1>
             </div>
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                <p class="fw-semibold text-dark fs-5 mb-3">Powering Oran Park Day & Night.</p>
+                <p class="fw-semibold text-dark fs-5 mb-3">Powering Sydney Day & Night.</p>
                 <a href="tel:0405005869" class="btn btn-dark text-white btn-lg fw-black text-uppercase tracking-wider px-4 py-3 rounded-pill d-inline-flex align-items-center gap-3 shadow-lg gsap-btn-pulse">
                     <i class="fas fa-phone-volume text-accent fs-4"></i>
                     <span>0405 005 869</span>
@@ -169,7 +187,7 @@
             <div class="col-12 col-md-6 col-lg-3">
                 <h4 class="h6 fw-black text-uppercase tracking-wider text-dark mb-3">Connect With Us</h4>
                 <p class="fw-medium text-dark opacity-85 small mb-4">
-                    Follow our real daily installs, trade tips, and project updates across Oran Park and Camden.
+                    Follow our real daily installs, trade tips, and project updates across Greater Sydney.
                 </p>
 
                 <div class="d-flex align-items-center gap-2 mb-4 gsap-social-container">
@@ -215,7 +233,7 @@
                 <ul class="list-unstyled d-flex flex-column gap-2 small fw-semibold text-dark mb-4">
                     <li class="d-flex align-items-start gap-2">
                         <i class="fas fa-location-dot mt-1"></i>
-                        <a href="https://maps.google.com/?q=Oran+Park+NSW+2570" target="_blank" rel="noopener noreferrer" class="footer-nav-link">Oran Park NSW 2570</a>
+                        <a href="https://maps.google.com/?q=Sydney+NSW" target="_blank" rel="noopener noreferrer" class="footer-nav-link">Sydney, NSW Australia</a>
                     </li>
                     <li class="d-flex align-items-center gap-2">
                         <i class="fas fa-envelope"></i>

@@ -26,7 +26,6 @@
                 d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
                 document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax`;
             } catch (e) {
-                // Fail silently if cookie storage is restricted
             }
         };
 
@@ -53,12 +52,12 @@
                 if (themeIcon) themeIcon.className = 'bi bi-moon-stars-fill';
                 if (themeText) themeText.textContent = 'Dark Mode';
                 if (themeToggler) themeToggler.className = 'btn btn-outline-light d-flex align-items-center gap-2 rounded-pill px-3 py-1.5';
-                if (navbarLogo) navbarLogo.src = navbarLogo.getAttribute('data-dark-src') || '/assets/images/logo-accent.png';
+                if (navbarLogo) navbarLogo.src = navbarLogo.getAttribute('data-dark-src') || '/assets/images/logo-accent.webp';
             } else {
                 if (themeIcon) themeIcon.className = 'bi bi-sun-fill';
                 if (themeText) themeText.textContent = 'Light Mode';
                 if (themeToggler) themeToggler.className = 'btn btn-outline-dark d-flex align-items-center gap-2 rounded-pill px-3 py-1.5';
-                if (navbarLogo) navbarLogo.src = navbarLogo.getAttribute('data-light-src') || '/assets/images/logo-black.png';
+                if (navbarLogo) navbarLogo.src = navbarLogo.getAttribute('data-light-src') || '/assets/images/logo-black.webp';
             }
         };
 
@@ -72,8 +71,6 @@
 
             return 'light';
         };
-
-        // Initialize Theme
         applyTheme(getInitialTheme());
 
         if (themeToggler) {
@@ -119,7 +116,6 @@
             }
         }, { passive: true });
 
-        // Scroll-triggered Header Hide/Show
         const header = document.getElementById('siteHeader');
         if (header) {
             let lastScrollY = window.scrollY;
@@ -214,67 +210,6 @@
         }
 
 
-        /* ==========================================================================
-           5. Offcanvas Left-Edge Touch Swipe Drawer
-           ========================================================================== */
-        // const offcanvasEl = document.getElementById('menuDrawer');
-        // if (offcanvasEl && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
-        //     let bsOffcanvas = null;
-        //     let touchStartX = 0;
-        //     let touchStartY = 0;
-        //
-        //     document.addEventListener('touchstart', (e) => {
-        //         if (e.changedTouches && e.changedTouches[0]) {
-        //             touchStartX = e.changedTouches[0].screenX;
-        //             touchStartY = e.changedTouches[0].screenY;
-        //         }
-        //     }, { passive: true });
-        //
-        //     document.addEventListener('touchend', (e) => {
-        //         if (!e.changedTouches || !e.changedTouches[0]) return;
-        //
-        //         const touchEndX = e.changedTouches[0].screenX;
-        //         const touchEndY = e.changedTouches[0].screenY;
-        //         const xDistance = touchStartX - touchEndX;
-        //         const yDistance = Math.abs(touchStartY - touchEndY);
-        //         const screenWidth = window.innerWidth;
-        //         const edgeThreshold = screenWidth * 0.35;
-        //
-        //         if (xDistance > 60 && yDistance < 80 && touchStartX > (screenWidth - edgeThreshold)) {
-        //             if (!bsOffcanvas) {
-        //                 bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
-        //             }
-        //             if (bsOffcanvas) bsOffcanvas.show();
-        //         }
-        //     }, { passive: true });
-        // }
-
-
-        /* ==========================================================================
-           6. Form Options Checkbox Toggles
-           ========================================================================== */
-        const solarCheck = document.getElementById('serviceSolar');
-        const evCheck = document.getElementById('serviceEV');
-        const solarSection = document.getElementById('solarOptionsSection');
-        const evSection = document.getElementById('evOptionsSection');
-
-        if (solarCheck || evCheck) {
-            const toggleSubQuestions = () => {
-                if (solarCheck && solarSection) {
-                    solarSection.classList.toggle('d-none', !solarCheck.checked);
-                }
-                if (evCheck && evSection) {
-                    evSection.classList.toggle('d-none', !evCheck.checked);
-                }
-            };
-
-            // Sync initial state on boot (restores position on back-button/reload)
-            toggleSubQuestions();
-
-            if (solarCheck) solarCheck.addEventListener('change', toggleSubQuestions);
-            if (evCheck) evCheck.addEventListener('change', toggleSubQuestions);
-        }
-
 
         /* ==========================================================================
            7. GSAP Laser Line, Timeline, & Footer Animations
@@ -284,7 +219,6 @@
 
             const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // Laser Progress Line & Vertical Timeline Reveal
             const laserLine = document.getElementById('laserProgressLine');
             const timelineItems = document.querySelectorAll('.timeline-item');
             const timelineContainer = document.querySelector('.timeline-container');
@@ -326,7 +260,6 @@
                 }
             }
 
-            // Footer Title & Social Button Stagger
             const ultraFooter = document.getElementById('ultra-footer');
             const revealTitle = document.querySelector('.gsap-reveal-title');
 
@@ -390,7 +323,6 @@
             if (typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // 1A. Generic Scroll Reveal Engine
                 const revealSelector = 'section .display-5, section .lead, section .card, section .accordion-item, #installation-process .row > div, .reveal-on-scroll';
                 const revealElements = document.querySelectorAll(revealSelector);
 
@@ -419,7 +351,6 @@
                     }
                 }
 
-                // 1B. Sparky Banner Timeline & Counter Animation
                 const banner = document.getElementById('sparky-banner');
                 if (banner) {
                     const animElements = banner.querySelectorAll('.gsap-anim');
@@ -508,7 +439,6 @@
                 }
             }
 
-            // 1C. Hero Glow Orbs Ambient Floating & Parallax
             const orb1 = document.querySelector('.hero-glow-orb-1');
             const orb2 = document.querySelector('.hero-glow-orb-2');
             const heroSection = document.querySelector('.dictionary-hero');
@@ -752,8 +682,7 @@
                 const scrollPercentage = scrollHeight > 0 ? Math.min(Math.max(scrollTop / scrollHeight, 0), 1) : 0;
 
                 if (radius > 0) {
-                    const offset = circumference - (scrollPercentage * circumference);
-                    circle.style.strokeDashoffset = offset;
+                    circle.style.strokeDashoffset = circumference - (scrollPercentage * circumference);
                 }
 
                 if (percentText) {
@@ -802,7 +731,7 @@
                         preferences: preferences
                     }));
                 } catch (e) {
-                    // Fail silently if localStorage access is restricted
+
                 }
                 cookieBanner.classList.remove("show");
             };
@@ -832,7 +761,6 @@
             const footerNav = document.querySelectorAll('[data-gsap="footer-nav"]');
 
             if (prefersReducedMotion) {
-                // Instantly render end states without motion if user prefers reduced motion
                 if (bgImg.length) gsap.set(bgImg, { scale: 1, opacity: 0.25 });
                 if (heroItems.length) gsap.set(heroItems, { y: 0, opacity: 1 });
                 if (featureItems.length) gsap.set(featureItems, { x: 0, opacity: 1 });
@@ -862,7 +790,6 @@
                 }
             }
 
-            // Dynamic Form Toggle Helpers
             const serviceTriggers = document.querySelectorAll('.service-trigger');
             const solarSec = document.getElementById('solarOptionsSection');
             const evSec = document.getElementById('evOptionsSection');
@@ -894,7 +821,6 @@
 
             if (serviceTriggers.length > 0) {
                 serviceTriggers.forEach((checkbox) => {
-                    // Initial check on page boot to preserve check states (e.g., soft reload / back button)
                     if (checkbox.id === 'serviceSolar' && solarSec && checkbox.checked) {
                         solarSec.classList.remove('d-none');
                     }
@@ -935,7 +861,6 @@
             const openServiceModalBySlug = (slug, updateHash = true) => {
                 if (!slug) return;
 
-                // Search priority: #services-grid payload -> generic payload -> view-details card parent
                 const payload = document.querySelector(`#services-grid .service-modal-data[data-service-slug="${slug}"]`) ||
                     document.querySelector(`.service-modal-data[data-service-slug="${slug}"]`) ||
                     document.querySelector(`.view-details-btn[data-slug="${slug}"]`)?.closest('.card')?.querySelector('.service-modal-data');
@@ -952,7 +877,6 @@
                 const nextSlug = payload.getAttribute('data-next-slug') || '';
                 const nextTitle = payload.getAttribute('data-next-title') || '';
 
-                // Populate Modal Fields
                 if (modalTitle) modalTitle.innerText = title;
                 if (modalDesc) modalDesc.innerText = desc;
                 if (modalImg) {
@@ -962,7 +886,6 @@
                 if (modalSectionsContainer) modalSectionsContainer.innerHTML = sectionsHtml;
                 if (modalBookBtn) modalBookBtn.setAttribute('href', waLink);
 
-                // Update Next Service Pill Container
                 currentNextSlug = nextSlug;
                 if (triggerNextServiceBtn) {
                     const nextContainer = triggerNextServiceBtn.closest('.next-service-container') || triggerNextServiceBtn.parentElement?.parentElement;
@@ -974,14 +897,12 @@
                     }
                 }
 
-                // Close Mobile Offcanvas Drawer if open
                 const activeOffcanvas = document.querySelector('.offcanvas.show');
                 if (activeOffcanvas && bootstrap.Offcanvas) {
                     const bsOffcanvas = bootstrap.Offcanvas.getInstance(activeOffcanvas);
                     if (bsOffcanvas) bsOffcanvas.hide();
                 }
 
-                // Update URL Hash
                 if (updateHash && window.history && window.history.pushState) {
                     history.pushState(null, null, `#${slug}`);
                 }
@@ -989,7 +910,6 @@
                 serviceModal.show();
             };
 
-            // Attach Click Handlers to View Details Buttons
             document.querySelectorAll('.view-details-btn').forEach((button) => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -998,21 +918,18 @@
                 });
             });
 
-            // Next Service Pill Click Handler
             if (triggerNextServiceBtn) {
                 triggerNextServiceBtn.addEventListener('click', () => {
                     if (currentNextSlug) openServiceModalBySlug(currentNextSlug);
                 });
             }
 
-            // Clear Hash when Modal is Closed
             serviceModalElement.addEventListener('hidden.bs.modal', () => {
                 if (window.location.hash && window.history && window.history.pushState) {
                     history.pushState('', document.title, window.location.pathname + window.location.search);
                 }
             });
 
-            // Handle URL Deep-Linking on Initial Page Load
             const initialHash = window.location.hash.replace('#', '');
             if (initialHash) {
                 setTimeout(() => {
@@ -1041,7 +958,6 @@
             const rawData = await response.json();
             const container = document.getElementById('services-container');
 
-            // Handle both flat array JSON and categorized JSON structures
             let categories = [];
             if (Array.isArray(rawData) && rawData.length > 0 && rawData[0].services) {
                 categories = rawData;
@@ -1049,14 +965,12 @@
                 categories = [{ category_id: "all-services", category_title: "Our Services", services: rawData }];
             }
 
-            // Map all services to global map
             categories.forEach(cat => {
                 (cat.services || []).forEach(srv => {
                     globalServicesMap[srv.slug] = srv;
                 });
             });
 
-            // Render main grid
             if (container) {
                 container.innerHTML = categories.map(category => `
                     <div class="mt-5" id="${category.category_id}">
@@ -1070,10 +984,8 @@
                 `).join('');
             }
 
-            // Initial direct link check
             handleUrlPath();
 
-            // Reset URL on close
             if (modalElement) {
                 modalElement.addEventListener('hidden.bs.modal', () => {
                     if (!isUpdatingRouteFromClick) {
@@ -1082,12 +994,10 @@
                 });
             }
 
-            // Browser Back/Forward buttons
             window.addEventListener('popstate', () => {
                 handleUrlPath();
             });
 
-            // Service details click delegate
             document.addEventListener('click', (e) => {
                 const btn = e.target.closest('.view-details-btn');
                 if (btn) {
@@ -1156,7 +1066,6 @@
             setTimeout(() => { isUpdatingRouteFromClick = false; }, 100);
         }
 
-        // Populate header details
         const imgEl = document.getElementById('modalServiceImg');
         const titleEl = document.getElementById('modalServiceTitle');
         const descEl = document.getElementById('modalServiceDesc');
@@ -1167,7 +1076,6 @@
         if (descEl) descEl.innerText = data.short_description || '';
         if (bookBtn) bookBtn.href = data.whatsapp_link || '#';
 
-        // Dynamic Section Renderer
         const sectionsContainer = document.getElementById('modalServiceSectionsContainer');
         if (sectionsContainer) {
             sectionsContainer.innerHTML = (data.modal_sections || []).map(sec => {
@@ -1217,7 +1125,6 @@
             }).join('');
         }
 
-        // Handle Next Service Button cleanly
         const nextBtn = document.getElementById('triggerNextServiceBtn');
         const nextWrapper = nextBtn ? nextBtn.closest('.next-service-wrapper') || nextBtn.parentElement : null;
 
@@ -1230,7 +1137,6 @@
             nextWrapper.style.display = 'none';
         }
 
-        // Reset modal scroll position to top when switching content
         const modalBody = document.querySelector('#serviceDetailsModal .modal-body');
         if (modalBody) modalBody.scrollTop = 0;
 
@@ -1243,19 +1149,17 @@
 
         if (!form) return;
 
-        // Helper: Australian Phone Number Regex (Mobile, Landline, +61)
         function isValidAustralianPhone(phone) {
             const cleaned = phone.replace(/[\s\-\(\)]/g, ''); // Remove spaces, dashes, brackets
             const auPhoneRegex = /^(?:\+?61|0)[23478]\d{8}$/;
             return auPhoneRegex.test(cleaned);
         }
 
-        // Helper: Basic Email Regex
+
         function isValidEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
 
-        // Clear red error styling as user types
         form.querySelectorAll('.form-control, .form-select').forEach(input => {
             input.addEventListener('input', function () {
                 this.classList.remove('is-invalid');
@@ -1275,31 +1179,26 @@
             const serviceInput = document.getElementById('serviceType');
             const messageInput = document.getElementById('contactMessage');
 
-            // Name Validation
             if (!nameInput.value.trim()) {
                 nameInput.classList.add('is-invalid');
                 isValid = false;
             }
 
-            // Phone Validation
             if (!isValidAustralianPhone(phoneInput.value)) {
                 phoneInput.classList.add('is-invalid');
                 isValid = false;
             }
 
-            // Email Validation
             if (!isValidEmail(emailInput.value)) {
                 emailInput.classList.add('is-invalid');
                 isValid = false;
             }
 
-            // Service Selection Validation
             if (!serviceInput.value) {
                 serviceInput.classList.add('is-invalid');
                 isValid = false;
             }
 
-            // Message Validation
             if (!messageInput.value.trim()) {
                 messageInput.classList.add('is-invalid');
                 isValid = false;
@@ -1311,12 +1210,10 @@
                 return;
             }
 
-            // Disable button & show spinner
             submitBtn.disabled = true;
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'Sending Request... <span class="spinner-border spinner-border-sm ms-2" role="status"></span>';
 
-            // Submit via AJAX
             fetch(form.getAttribute('action'), {
                 method: 'POST',
                 body: new FormData(form)
@@ -1342,5 +1239,217 @@
                     submitBtn.innerHTML = originalBtnText;
                 });
         });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        const form = document.getElementById('gridConfiguratorForm');
+        const steps = document.querySelectorAll('.wizard-step');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const stepIndicatorText = document.getElementById('stepIndicatorText');
+        const errorMessageContainer = document.getElementById('stepErrorMessage');
+        const errorMessageText = document.getElementById('errorMessageText');
+
+        const catElectrical = document.getElementById('catElectrical');
+        const catSolar = document.getElementById('catSolar');
+        const catEV = document.getElementById('catEV');
+
+        const electricalSubSection = document.getElementById('electricalSubSection');
+        const solarSubSection = document.getElementById('solarSubSection');
+        const evSubSection = document.getElementById('evSubSection');
+
+        // Display or Clear Validation Errors
+        const showError = (message, activeStepElement) => {
+            errorMessageText.textContent = message;
+            errorMessageContainer.classList.remove('d-none');
+            errorMessageContainer.classList.add('d-flex');
+
+            if (activeStepElement) {
+                activeStepElement.classList.add('has-error');
+            }
+        };
+
+        const clearError = () => {
+            errorMessageContainer.classList.add('d-none');
+            errorMessageContainer.classList.remove('d-flex');
+            steps.forEach(step => step.classList.remove('has-error'));
+
+            // Remove individual field error indicators
+            const formControls = form.querySelectorAll('.form-control');
+            formControls.forEach(input => input.classList.remove('is-invalid'));
+        };
+
+        // Update UI View
+        const updateWizard = () => {
+            clearError();
+
+            // Step Visibility Sync
+            steps.forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === currentStep);
+            });
+
+            // Header Step Counter Sync
+            stepIndicatorText.textContent = `Step ${currentStep} of ${totalSteps}`;
+
+            // Control Buttons Sync
+            if (currentStep === 1) {
+                prevBtn.classList.add('d-none');
+                nextBtn.classList.remove('d-none');
+                nextBtn.classList.replace('w-50', 'w-100');
+                submitBtn.classList.add('d-none');
+            } else if (currentStep === totalSteps) {
+                prevBtn.classList.remove('d-none');
+                nextBtn.classList.add('d-none');
+                submitBtn.classList.remove('d-none');
+                submitBtn.classList.add('d-flex');
+                prevBtn.classList.replace('w-100', 'w-50');
+            } else {
+                prevBtn.classList.remove('d-none');
+                nextBtn.classList.remove('d-none');
+                submitBtn.classList.add('d-none');
+                prevBtn.classList.replace('w-100', 'w-50');
+                nextBtn.classList.replace('w-100', 'w-50');
+            }
+        };
+
+        // Toggle Step 2 sub-sections based on Step 1 primary selections
+        const syncSubSections = () => {
+            if (electricalSubSection) electricalSubSection.classList.toggle('d-none', !catElectrical.checked);
+            if (solarSubSection) solarSubSection.classList.toggle('d-none', !catSolar.checked);
+            if (evSubSection) evSubSection.classList.toggle('d-none', !catEV.checked);
+        };
+
+        // Comprehensive Step Validation
+        const validateCurrentStep = () => {
+            clearError();
+            const activeStepEl = document.querySelector(`.wizard-step[data-step="${currentStep}"]`);
+
+            // Step 1 Validation
+            if (currentStep === 1) {
+                const hasCategorySelected = catElectrical.checked || catSolar.checked || catEV.checked;
+                if (!hasCategorySelected) {
+                    showError('Please select at least one primary service option to continue.', activeStepEl);
+                    return false;
+                }
+            }
+
+            // Step 2 Validation
+            if (currentStep === 2) {
+                if (catElectrical.checked) {
+                    const electricalChecked = electricalSubSection.querySelectorAll('input[type="checkbox"]:checked');
+                    if (electricalChecked.length === 0) {
+                        showError('Please select at least one electrical service needed.', activeStepEl);
+                        return false;
+                    }
+                }
+
+                if (catSolar.checked) {
+                    const roofTypeChecked = solarSubSection.querySelectorAll('input[name="roofType"]:checked');
+                    const houseFacingChecked = solarSubSection.querySelectorAll('input[name="houseFacing"]:checked');
+
+                    if (roofTypeChecked.length === 0) {
+                        showError('Please select a roof type under Solar & Battery details.', activeStepEl);
+                        return false;
+                    }
+                    if (houseFacingChecked.length === 0) {
+                        showError('Please select a roof direction under Solar & Battery details.', activeStepEl);
+                        return false;
+                    }
+                }
+
+                if (catEV.checked) {
+                    const evBrandChecked = evSubSection.querySelectorAll('input[name="evBrand"]:checked');
+                    if (evBrandChecked.length === 0) {
+                        showError('Please select an option for your EV Charger setup.', activeStepEl);
+                        return false;
+                    }
+                }
+            }
+
+            // Step 4 Validation (Contact Form)
+            if (currentStep === 4) {
+                const fullName = document.getElementById('fullName');
+                const phoneNumber = document.getElementById('phoneNumber');
+                const emailAddress = document.getElementById('emailAddress');
+                let isValid = true;
+
+                if (!fullName.value.trim()) {
+                    fullName.classList.add('is-invalid');
+                    isValid = false;
+                }
+                if (!phoneNumber.value.trim()) {
+                    phoneNumber.classList.add('is-invalid');
+                    isValid = false;
+                }
+                if (!emailAddress.value.trim() || !emailAddress.value.includes('@')) {
+                    emailAddress.classList.add('is-invalid');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    showError('Please fill in all required contact details correctly.', activeStepEl);
+                    return false;
+                }
+            }
+
+            return true;
+        };
+
+        // Auto-clear error state on user selection/input change
+        form.addEventListener('change', () => {
+            if (document.querySelector('.wizard-step.has-error')) {
+                clearError();
+            }
+        });
+
+        // Navigation Controls Setup
+        nextBtn.addEventListener('click', () => {
+            if (validateCurrentStep()) {
+                if (currentStep === 1) {
+                    syncSubSections();
+                }
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateWizard();
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateWizard();
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            if (!validateCurrentStep()) {
+                e.preventDefault();
+            }
+        });
+
+        // Initialize Widget
+        updateWizard();
+    });
+</script>
+<script>
+    console.log('[PWA] sw.js script loaded');
+
+    self.addEventListener('install', (event) => {
+        console.log('[PWA] Install event triggered');
+        event.waitUntil(
+            caches.open('sparky-v1.0.0').then((cache) => {
+                console.log('[PWA] Cache opened successfully');
+                return cache.addAll(['/offline.php', '/css/bootstrap.min.css']);
+            }).then(() => {
+                console.log('[PWA] Assets cached successfully!');
+            }).catch((err) => {
+                console.error('[PWA] Cache failed during install:', err);
+            })
+        );
+        self.skipWaiting();
     });
 </script>

@@ -1,15 +1,15 @@
 <?php
 $page_slug = "about-us";
 $page_title = "About 24/7 Sparky | Sydney’s Trusted Electrical Agency & Contractors";
-$page_description = "Meet Sydney's leading team of certified Level 2 ASP and commercial electricians. Built on ISO-certified quality management, continuous training, and 24/7 emergency reliability.";
-$page_keywords = "about 24/7 sparky, best electrical company Sydney, accredited Level 2 ASP team, ISO certified electricians, local commercial electricians Sydney";
+$page_description = "Meet Sydney's leading team of certified and commercial electricians. Built on ISO-certified quality management, continuous training, and 24/7 emergency reliability.";
+$page_keywords = "about 24/7 sparky, best electrical company Sydney, accredited electrician team, ISO certified electricians, local commercial electricians Sydney";
 ob_start(); ?>
 
 <section class="about-hero position-relative min-vh-100 d-flex align-items-center justify-content-center overflow-hidden py-5 py-lg-6 mt-5 bg-body">
 
     <!-- Background Image Layer with Theme-Adaptive Vignette Overlay -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img src="/assets/images/homebanner4.png" alt="Sydney Electrical Team" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner4.webp" alt="Sydney Electrical Team" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 
@@ -568,7 +568,7 @@ ob_start(); ?>
 
     <!-- Background Image Layer with Theme-Adaptive Vignette -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0">
-        <img src="/assets/images/homebanner3.png" alt="24Seven Sparky How It Works Process" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner3.webp" alt="24Seven Sparky How It Works Process" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 
@@ -773,12 +773,9 @@ ob_start(); ?>
         <div class="row g-3 align-items-center justify-content-center text-center text-md-start extra-small fw-semibold text-uppercase tracking-wider">
             <div class="col-6 col-md-auto d-flex align-items-center justify-content-center gap-2">
                 <i class="fas fa-id-card text-accent fs-6"></i>
-                <span>NSW Lic #382910C</span>
+                <span>NSW Lic #491657C</span>
             </div>
-            <div class="col-6 col-md-auto d-flex align-items-center justify-content-center gap-2">
-                <i class="fas fa-certificate text-accent fs-6"></i>
-                <span>ASP Level 2 Accredited</span>
-            </div>
+
             <div class="col-6 col-md-auto d-flex align-items-center justify-content-center gap-2">
                 <i class="fas fa-shield-halved text-accent fs-6"></i>
                 <span>$20M Public Liability</span>
@@ -1191,45 +1188,46 @@ ob_start(); ?>
         }
     });
 </script>
+<!-- Sticky Accordion FAQ Section -->
 <section id="faq-accordion" class="py-5 bg-body position-relative">
     <div class="container py-4">
-        <div class="row g-4 g-lg-5">
+        <div class="row g-lg-5">
 
             <!-- Left Column: Sticky Brand Pillar (Desktop Sticky) -->
             <div class="col-lg-5">
                 <div class="sticky-lg-top" style="top: 100px; z-index: 10;">
 
                     <!-- Chip Badge -->
-                    <div class="badge bg-accent text-dark fw-semibold text-uppercase px-2 py-1 rounded-pill">
-                        <i class="fas fa-comments-dollar"></i>
-                        <span>Oran Park & Western Sydney FAQs</span>
+                    <div class="badge bg-accent text-dark fw-bold text-uppercase px-2 py-1 rounded-pill">
+                        <i class="fas fa-comments-dollar me-1"></i>
+                        <span>Sydney-Wide Electrical &amp; Solar FAQs</span>
                     </div>
 
                     <!-- Main Heading -->
-                    <h2 class="display-4 fw-black text-uppercase tracking-tight text-body mb-2">
+                    <h2 class="display-5 fw-black text-uppercase tracking-tight text-body mb-2">
                         Got Questions?<br>
                         <span class="text-accent">Straight Answers.</span>
                     </h2>
 
                     <!-- Sub Heading -->
-                    <h3 class="h6 fw-semibold text-uppercase tracking-wider text-body-secondary mb-3">
-                        No BS Local Trade Advice
+                    <h3 class="h6 fw-bold text-uppercase tracking-wider text-body-secondary mb-3">
+                        No BS Trade Advice From Licensed NSW Electricians
                     </h3>
 
                     <!-- Paragraph -->
                     <p class="text-body-secondary fs-6 mb-4" style="line-height: 1.6;">
-                        Got doubts about going solar or adding a battery out in Oran Park or Western Sydney? Here is the honest truth from local sparkies who actually work on the roofs and main switchboards daily.
+                        Got questions about 24/7 emergency response, solar installs, EV chargers, or switchboard upgrades across Sydney? Here is the honest truth from certified local sparkies who service homes and commercial properties daily.
                     </p>
 
                     <!-- CTA Button Group -->
                     <div class="d-flex flex-column gap-3 align-items-start">
-                        <a href="#contact" class="btn btn-power text-white fw-semibold px-4 py-3 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm">
-                            <span>Get An Oran Park Sparky Out</span>
+                        <a href="#contact" class="btn btn-power text-white fw-bold px-4 py-3 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm">
+                            <span>Get A Sydney Sparky Out</span>
                             <i class="fas fa-arrow-right text-black"></i>
                         </a>
-                        <div class="d-flex align-items-center gap-2 extra-small fw-semibold text-body-secondary ms-1">
+                        <div class="d-flex align-items-center gap-2 extra-small fw-bold text-body-secondary ms-1">
                             <i class="fas fa-shield-halved text-accent fs-6"></i>
-                            <span>100% Workmanship Guarantee</span>
+                            <span>100% Workmanship Guarantee | NSW Lic: 491657C</span>
                         </div>
                     </div>
 
@@ -1240,131 +1238,164 @@ ob_start(); ?>
             <div class="col-lg-7">
                 <div class="accordion accordion-flush d-flex flex-column gap-3" id="faqAccordion">
 
-                    <!-- FAQ Item 1: Solar Rebates & ROI -->
+                    <!-- FAQ Item 1: 24/7 Emergency Response (GEO/AEO Prime Target) -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingOne">
-                            <button class="accordion-button py-4 px-4 bg-body-tertiary text-body fw-semibold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                            <button class="accordion-button py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-solar-panel text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Are solar power systems worth it in Western Sydney?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-bolt text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">How fast can an emergency electrician respond in Sydney?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Yes, rooftop solar remains one of the highest-yielding home investments in Sydney.</strong> Due to Western Sydney's high solar irradiance, a typical residential solar array pays for itself within 3 to 5 years by reducing quarterly power bills by up to 70%.
+                                    <strong>24/7 Sparky dispatches licensed emergency electricians across Greater Sydney 24 hours a day, 7 days a week.</strong> For critical emergencies—such as total power failure, burning electrical smells, active sparking, or tripped safety switches—our mobile trade units aim for an immediate priority response.
                                 </p>
                                 <div class="bg-body p-3 rounded-3 border">
-                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Key Local Financial Benefits:</strong>
+                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Common Emergency Services We Handle On-Site:</strong>
                                     <ul class="text-body-secondary small mb-0 ps-3">
-                                        <li class="mb-1"><strong>NSW STC Rebates:</strong> Upfront federal point-of-sale discounts applied directly to your system cost.</li>
-                                        <li class="mb-1"><strong>Grid Feed-In Tariffs:</strong> Sell excess daytime solar energy back to your retail energy provider.</li>
-                                        <li><strong>Property Value:</strong> Homes with CEC-accredited solar installations consistently command higher resale value.</li>
+                                        <li class="mb-1"><strong>Power Restoration:</strong> Rapid fault finding for residential &amp; commercial blackouts.</li>
+                                        <li class="mb-1"><strong>Switchboard Hazards:</strong> Blown fuses, melted circuit breakers, and RCD replacements.</li>
+                                        <li><strong>Storm Damage:</strong> Emergency isolation for water-damaged wiring or fallen service lines.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 2: Solar Battery Storage & Night Use -->
+                    <!-- FAQ Item 2: Switchboard Upgrades & AS/NZS 3000 Compliance -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingTwo">
-                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-semibold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-battery-full text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">How does adding a solar battery lower electricity bills?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-sliders text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Why do Sydney homes need a switchboard upgrade?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>A solar battery stores excess electricity generated during peak daylight hours so your home can run on free stored solar power at night.</strong> This protects you from peak electricity rates (typically charged between 4 PM and 9 PM by energy retailers).
+                                    <strong>Older Sydney switchboards with ceramic fuses or asbestos backing panels pose high fire hazards and fail to handle modern electrical loads.</strong> Under Australian Standards (AS/NZS 3000 Wiring Rules), modern homes require safety switches (RCDs) on every circuit to prevent electrocution and electrical fires.
                                 </p>
                                 <p class="text-body-secondary small mb-0">
-                                    With blackout protection (EPS mode) enabled, your battery system also acts as an automated emergency backup power supply if the main street grid fails during severe summer storms.
+                                    Upgrading your electrical board is also essential prior to installing solar systems, EV wall chargers, induction cooktops, or high-capacity air conditioning units.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 3: EV Charger Solar Integration -->
+                    <!-- FAQ Item 3: Solar ROI & Sydney Financial Rebates -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingThree">
-                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-semibold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-charging-station text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Can electric vehicle (EV) wall chargers be integrated with solar?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-solar-panel text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Are solar panels and battery storage worth it in Sydney?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Yes, smart EV chargers can be configured to charge your electric vehicle using 100% free rooftop solar energy.</strong> We install single-phase and three-phase Level 2 EV wall chargers equipped with solar-matching modes that dynamically balance charging speeds based on live rooftop output.
+                                    <strong>Yes, rooftop solar and battery storage deliver excellent return on investment across Sydney.</strong> A CEC-accredited solar system reduces quarterly power bills by up to 70%, typically paying itself off within 3 to 5 years. Adding a battery lets you store excess day generation to run your home on free energy through peak evening power rates.
                                 </p>
-                                <div class="row g-2 text-center extra-small text-uppercase fw-semibold text-secondary">
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Tesla Compatible</div></div>
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Type 2 Universal</div></div>
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Smart Solar Match</div></div>
+                                <div class="bg-body p-3 rounded-3 border">
+                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Government Rebates &amp; Financial Perks:</strong>
+                                    <ul class="text-body-secondary small mb-0 ps-3">
+                                        <li class="mb-1"><strong>Federal STCs:</strong> Upfront point-of-sale discounts on eligible solar installations.</li>
+                                        <li class="mb-1"><strong>Feed-in Tariffs:</strong> Earn grid credits for excess solar electricity exported back to the grid.</li>
+                                        <li><strong>NSW Energy Battery Incentives:</strong> Save on upfront battery installation costs via state schemes.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 4: Emergency Response & Level 2 ASP -->
+                    <!-- FAQ Item 4: Smart EV Charger Installation -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingFour">
-                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-semibold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-bolt text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Do you provide 24/7 emergency electrical services & board upgrades?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-charging-station text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Can EV wall chargers be integrated with existing solar panels?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
-                                <p class="text-body-secondary mb-0" style="line-height: 1.6;">
-                                    <strong>Too right we do.</strong> We provide 24/7 rapid emergency electrician dispatch across Oran Park and South West Sydney for dangerous power outages, burnt switchboards, and safety switch trips. We also perform complete switchboard upgrades, replacing outdated ceramic fuses with modern RCD safety switches to comply with NSW AS/NZS 3000 safety regulations.
+                                <p class="text-body-secondary mb-3" style="line-height: 1.6;">
+                                    <strong>Yes, smart Level 2 EV chargers can dynamically sync with your rooftop solar array to charge your electric vehicle for free.</strong> We install single-phase (7.4kW) and three-phase (22kW) wallbox chargers equipped with solar-matching tech for all major EV models.
                                 </p>
+                                <div class="row text-center extra-small text-uppercase fw-bold text-secondary g-2">
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Tesla Ready</div></div>
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Type 2 Universal</div></div>
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Solar Match Mode</div></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 5: Local Coverage & Compliance -->
+                    <!-- FAQ Item 5: Compliance & Certification (SEO/AEO Authority) -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingFive">
-                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-semibold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-location-dot text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">What Sydney suburbs are covered by your electrical team?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-certificate text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Are your electricians licensed, insured, and certified in NSW?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
+                                <p class="text-body-secondary mb-0" style="line-height: 1.6;">
+                                    <strong>Absolutely.</strong> 24/7 Sparky operates under NSW Electrical Contractor License <strong>491657C</strong>. Every electrician on our team is fully licensed, insured, and certified by the Clean Energy Council (CEC) for solar and battery installations. We issue a Compliance Certificate (CCEW) upon completion of electrical work to ensure 100% safety and regulatory adherence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6: Geographic Coverage (Local SEO & GEO Keywords) -->
+                    <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
+                        <h3 class="accordion-header mb-0" id="headingSix">
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-location-dot text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Which areas of Sydney do you service?</span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body px-4 pb-4 pt-0">
+                                <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Our trade vans operate daily across Oran Park, the Macarthur region, and Greater Western Sydney.</strong> We manage local grid connection approvals directly with network distributors like Endeavour Energy.
+                                    <strong>Our mobile fleets cover all regions across Sydney and Greater Western Sydney.</strong> We manage local grid connection applications directly with network distributors including Endeavour Energy and Ausgrid.
                                 </p>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-body border text-body font-monospace">Oran Park (2570)</span>
-                                    <span class="badge bg-body border text-body font-monospace">Gregory Hills</span>
-                                    <span class="badge bg-body border text-body font-monospace">Narellan</span>
-                                    <span class="badge bg-body border text-body font-monospace">Camden</span>
-                                    <span class="badge bg-body border text-body font-monospace">Campbelltown</span>
-                                    <span class="badge bg-body border text-body font-monospace">Liverpool</span>
+                                    <span class="badge bg-body border text-body font-monospace">Sydney CBD</span>
+                                    <span class="badge bg-body border text-body font-monospace">Western Sydney</span>
+                                    <span class="badge bg-body border text-body font-monospace">Oran Park</span>
+                                    <span class="badge bg-body border text-body font-monospace">Parramatta</span>
                                     <span class="badge bg-body border text-body font-monospace">Penrith</span>
+                                    <span class="badge bg-body border text-body font-monospace">Liverpool</span>
+                                    <span class="badge bg-body border text-body font-monospace">Campbelltown</span>
+                                    <span class="badge bg-body border text-body font-monospace">Inner West</span>
+                                    <span class="badge bg-body border text-body font-monospace">Hills District</span>
+                                    <span class="badge bg-body border text-body font-monospace">Sutherland Shire</span>
+                                    <span class="badge bg-body border text-body font-monospace">Northern Beaches</span>
                                 </div>
                             </div>
                         </div>

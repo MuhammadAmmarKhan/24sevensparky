@@ -7,7 +7,7 @@
         "slug": "power-points",
         "title": "Power Points",
         "short_description": "Safe, stylish indoor and weatherproof outdoor power point installations, repairs, and USB upgrades.",
-        "image": "/assets/images/power-points.png",
+        "image": "/assets/images/power-points.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Power%20Points.",
         "next_service": {
           "slug": "switchboard-upgrade",
@@ -70,7 +70,7 @@
         "slug": "switchboard-upgrade",
         "title": "Switchboard Upgrade",
         "short_description": "Modern safety switch and circuit breaker replacements for complete electrical system protection.",
-        "image": "/assets/images/switchboard-upgrade.png",
+        "image": "/assets/images/switchboard-upgrade.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20a%20Switchboard%20Upgrade.",
         "next_service": {
           "slug": "exhaust-fans",
@@ -132,7 +132,7 @@
         "slug": "exhaust-fans",
         "title": "Exhaust Fans",
         "short_description": "High-extraction bathroom, kitchen, and sub-floor ventilation to eliminate moisture and mold.",
-        "image": "/assets/images/exhaust-fans.png",
+        "image": "/assets/images/exhaust-fans.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Exhaust%20Fans.",
         "next_service": {
           "slug": "smoke-alarms",
@@ -195,7 +195,7 @@
         "slug": "smoke-alarms",
         "title": "Smoke Alarms",
         "short_description": "Photoelectric mains-powered and 10-year wireless interconnected smoke alarm system installations.",
-        "image": "/assets/images/smoke-alarms.png",
+        "image": "/assets/images/smoke-alarms.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Smoke%20Alarms.",
         "next_service": {
           "slug": "office-fit-outs",
@@ -258,7 +258,7 @@
         "slug": "office-fit-outs",
         "title": "Office Fit-Outs",
         "short_description": "Complete electrical, power, commercial lighting, and data cabling setups for modern commercial spaces.",
-        "image": "/assets/images/office-fit-outs.png",
+        "image": "/assets/images/office-fit-outs.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Office%20Fit-Outs.",
         "next_service": {
           "slug": "home-renovation",
@@ -321,7 +321,7 @@
         "slug": "home-renovation",
         "title": "Home Renovation",
         "short_description": "Full rewiring, architectural lighting design, and power layout extensions for kitchen and bath remodels.",
-        "image": "/assets/images/home-renovation.png",
+        "image": "/assets/images/home-renovation.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Home%20Renovation.",
         "next_service": {
           "slug": "led-downlights",
@@ -384,7 +384,7 @@
         "slug": "led-downlights",
         "title": "LED Downlights",
         "short_description": "Energy-efficient warm and cool white dimmable LED downlight conversions and installations.",
-        "image": "/assets/images/led-downlights.png",
+        "image": "/assets/images/led-downlights.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20LED%20Downlights.",
         "next_service": {
           "slug": "home-appliance",
@@ -447,7 +447,7 @@
         "slug": "home-appliance",
         "title": "Home Appliance",
         "short_description": "Dedicated circuit installations for ovens, induction cooktops, water heaters, and heavy equipment.",
-        "image": "/assets/images/home-appliance.png",
+        "image": "/assets/images/home-appliance.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Home%20Appliance.",
         "next_service": {
           "slug": "ceiling-fans",
@@ -510,7 +510,7 @@
         "slug": "ceiling-fans",
         "title": "Ceiling Fans",
         "short_description": "Indoor and outdoor timber/ABS blade ceiling fan installations with remote and smart controls.",
-        "image": "/assets/images/ceiling-fans.png",
+        "image": "/assets/images/ceiling-fans.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Ceiling%20Fans.",
         "next_service": {
           "slug": "data-cabling",
@@ -573,7 +573,7 @@
         "slug": "data-cabling",
         "title": "Data Cabling",
         "short_description": "High-speed Cat6/Cat6A structured Ethernet cabling, patch panels, and Wi-Fi access point setups.",
-        "image": "/assets/images/data-cabling.png",
+        "image": "/assets/images/data-cabling.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Data%20Cabling.",
         "next_service": {
           "slug": "tv-antenna",
@@ -636,7 +636,7 @@
         "slug": "tv-antenna",
         "title": "TV Antenna",
         "short_description": "Digital TV antenna installations, signal boosters, coaxial wall outlets, and wall mounting.",
-        "image": "/assets/images/tv-antenna.png",
+        "image": "/assets/images/tv-antenna.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20TV%20Antenna.",
         "next_service": {
           "slug": "house-wiring",
@@ -699,7 +699,7 @@
         "slug": "house-wiring",
         "title": "House Wiring",
         "short_description": "Complete house rewiring for older homes to meet safety codes and support modern power loads.",
-        "image": "/assets/images/house-wiring.png",
+        "image": "/assets/images/house-wiring.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20House%20Wiring.",
         "next_service": {
           "slug": "solar-panel-installation",
@@ -768,7 +768,7 @@
         "slug": "solar-panel-installation",
         "title": "Solar Panel Installation",
         "short_description": "Tier-1 rooftop solar panel installations engineered for maximum efficiency and long-term energy savings.",
-        "image": "/assets/images/solar-panel-installation.png",
+        "image": "/assets/images/solar-panel-installation.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20Solar%20Panel%20Installation.",
         "next_service": { "slug": "solar-battery-installation", "title": "Solar Battery Installation" },
         "modal_sections": [
@@ -803,7 +803,7 @@
         "slug": "solar-battery-installation",
         "title": "Solar Battery Installation",
         "short_description": "Store daytime solar energy for night use and keep your home powered during grid outages.",
-        "image": "/assets/images/solar-battery-installation.png",
+        "image": "/assets/images/solar-battery-installation.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'm%20interested%20in%20Solar%20Battery%20Installation.",
         "next_service": { "slug": "ev-charging-installation", "title": "EV Charging Installation" },
         "modal_sections": [
@@ -843,15 +843,15 @@
       {
         "slug": "ev-charging-installation",
         "title": "EV Charging Installation",
-        "short_description": "Fast, safe Level 2 electric vehicle charger installations for home garages and commercial sites.",
-        "image": "/assets/images/ev-charger.png",
+        "short_description": "Fast, safe electric vehicle charger installations for home garages and commercial sites.",
+        "image": "/assets/images/ev-charger.webp",
         "whatsapp_link": "https://wa.me/61405005869?text=Hi%2024/7%20Sparky,%20I'd%20like%20a%20quote%20for%20EV%20Charging%20Installation.",
         "next_service": { "slug": "power-points", "title": "Power Points" },
         "modal_sections": [
           {
             "type": "lead_text",
             "badge": "Section 01 • Fast EV Charging",
-            "heading": "Level 2 Dedicated Home & Fleet Charging",
+            "heading": "Dedicated Home & Fleet Charging",
             "text": "Charge your electric vehicle up to 10x faster than standard wall outlets with professionally wired 7kW to 22kW wallboxes."
           },
           {

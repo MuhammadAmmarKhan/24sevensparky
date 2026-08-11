@@ -1,8 +1,8 @@
 <?php
 header("HTTP/1.1 404 Not Found");
 $page_slug = "404";
-$page_title = "404";
-$page_description = "404";
+$page_title = "404 - Page Not Found";
+$page_description = "The page you are looking for does not exist or has been moved.";
 ob_start();
 ?>
 <section id="error404" class="min-vh-100 w-100 d-flex align-items-center justify-content-center bg-light-subtle py-5">
@@ -18,7 +18,7 @@ ob_start();
 
                 <!-- Cute Electrical Graphic Image -->
                 <div class="illustration-box mb-4 mx-auto" style="max-width: 260px;">
-                    <img src="/assets/images/404.png" alt="404 Page Not Found" class="img-fluid">
+                    <img src="/assets/images/404.webp" alt="404 Page Not Found" class="img-fluid">
                 </div>
 
                 <!-- Section Main Title -->

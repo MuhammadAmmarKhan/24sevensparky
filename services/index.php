@@ -88,7 +88,7 @@ ob_start();
 
     <!-- Background Image Layer with Theme-Adaptive Overlay & Glow Orbs -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img src="/assets/images/homebanner11.png" alt="Licensed Electricians and Solar Installers in Sydney" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner11.webp" alt="Licensed Electricians and Solar Installers in Sydney" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 

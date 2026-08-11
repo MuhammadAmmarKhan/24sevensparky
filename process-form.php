@@ -1,10 +1,11 @@
 <?php
-// Set response header for JSON format (useful for AJAX submissions)
+// Set response header for JSON format
 header('Content-Type: application/json; charset=utf-8');
 
 // Config settings
 $admin_email = "info@24sevensparky.com.au";
-$from_email  = "no-reply@24seven.com.au";
+// IMPORTANT: From header domain MUST match your actual hosting domain to pass SPF check
+$from_email  = "no-reply@" . ($_SERVER['SERVER_NAME'] ?? "24sevensparky.com.au");
 $site_name   = "24/7 Sparky";
 
 // Ensure request is POST
@@ -20,6 +21,7 @@ $phone        = isset($_POST['contactPhone']) ? trim(filter_var($_POST['contactP
 $email        = isset($_POST['contactEmail']) ? trim(filter_var($_POST['contactEmail'], FILTER_VALIDATE_EMAIL)) : '';
 $service_type = isset($_POST['serviceType']) ? trim(filter_var($_POST['serviceType'], FILTER_SANITIZE_SPECIAL_CHARS)) : '';
 $message      = isset($_POST['contactMessage']) ? trim(filter_var($_POST['contactMessage'], FILTER_SANITIZE_SPECIAL_CHARS)) : '';
+
 // Basic validation
 if (empty($name) || empty($phone) || !$email || empty($service_type) || empty($message)) {
     http_response_code(400);
@@ -39,15 +41,12 @@ if (!file_exists($template_path)) {
 $template_content = file_get_contents($template_path);
 
 // Determine dynamic badge style
-$badge_class = "badge-contact";
-if (stripos($service_type, 'Emergency') !== false) {
-    $badge_class = "badge-emergency";
-}
+$badge_class = (stripos($service_type, 'Emergency') !== false) ? "badge-emergency" : "badge-contact";
 
 // Format submission time
 $submitted_at = date("d M Y, h:i A");
 
-// Build HTML body content for the {{body_content}} placeholder
+// Build HTML body content
 $body_content = '
     <div style="text-align: center;">
         <span class="badge ' . $badge_class . '">New Website Enquiry</span>
@@ -90,19 +89,20 @@ $body_content = '
 // Inject dynamic content into template
 $final_email_body = str_replace('{{body_content}}', $body_content, $template_content);
 
-// Set Email Headers
+// Subject line
 $subject = "⚡ New Service Request: " . $service_type . " - " . $name;
 
+// Clean RFC 2822 Headers
 $headers   = array();
 $headers[] = "MIME-Version: 1.0";
-$headers[] = "Content-type: text/html; charset=utf-8";
+$headers[] = "Content-Type: text/html; charset=UTF-8";
 $headers[] = "From: {$site_name} <{$from_email}>";
 $headers[] = "Reply-To: {$name} <{$email}>";
-$headers[] = "Cc: {$email}"; // CC customer as requested
+$headers[] = "Cc: {$email}";
 $headers[] = "X-Mailer: PHP/" . phpversion();
 
-// Send Mail
-$mail_sent = mail($admin_email, $subject, $final_email_body, implode("\r\n", $headers));
+// 5th parameter '-f' sets Envelope Return-Path to prevent server drops
+$mail_sent = mail($admin_email, $subject, $final_email_body, implode("\r\n", $headers), "-f{$from_email}");
 
 if ($mail_sent) {
     echo json_encode([

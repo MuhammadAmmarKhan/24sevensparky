@@ -17,7 +17,7 @@ ob_start();
 
                     <!-- Cute Offline Graphic Image -->
                     <div class="illustration-box illustration-box-md mb-4 mx-auto">
-                        <img src="assets/images/offline.png" alt="Offline - Connection Lost" class="img-fluid">
+                        <img src="assets/images/offline.webp" alt="Offline - Connection Lost" class="img-fluid">
                     </div>
 
                     <!-- Section Main Title -->

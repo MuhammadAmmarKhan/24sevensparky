@@ -1,15 +1,15 @@
 <?php
 $page_slug = "contact-us";
 $page_title = "Contact 24/7 Sparky | 24/7 Emergency Dispatch & Free Quotes Sydney";
-$page_description = "Need a 24/7 emergency electrician or a commercial quote in Sydney? Call 0405 005 869 now for immediate dispatch or contact our ASP Level 2 team online.";
-$page_keywords = "contact 24/7 sparky, emergency electrician phone number Sydney, book electrician online Sydney, Level 2 ASP emergency line, 24/7 sparky phone number";
+$page_description = "Need a 24/7 emergency electrician or a commercial quote in Sydney? Call 0405 005 869 now for immediate dispatch or contact our online.";
+$page_keywords = "contact 24/7 sparky, emergency electrician phone number Sydney, book electrician online Sydney, emergency line, 24/7 sparky phone number";
 ob_start(); ?>
 <!-- CONTACT US HERO SECTION -->
 <section class="contact-hero position-relative min-vh-100 d-flex align-items-center justify-content-center overflow-hidden py-5 py-lg-5 bg-body">
 
     <!-- Background Image Layer with Theme-Adaptive Overlay & Glow Orbs -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img src="/assets/images/homebanner4.png" alt="Sydney 24/7 Electrical Contact Dispatch" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner4.webp" alt="Sydney 24/7 Electrical Contact Dispatch" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 

@@ -18,7 +18,22 @@ $canonical_url = $protocol . $_SERVER['HTTP_HOST'] . strtok($_SERVER['REQUEST_UR
 ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+    (function() {
+        // Get saved theme from localStorage, or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+        const theme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+
+        // Apply theme instantly before DOM paints
+        // For Bootstrap 5.3+ data attribute:
+        document.documentElement.setAttribute('data-bs-theme', theme);
+
+        // OR if you use a CSS class on body/html (e.g., .dark-mode or .dark):
+        // if (theme === 'dark') document.documentElement.classList.add('dark-mode');
+    })();
+</script>
 <title><?php echo htmlspecialchars($page_title ?? '24/7 Sparky'); ?></title>
 <meta name="description" content="<?php echo htmlspecialchars($page_description ?? ''); ?>">
 <meta name="keywords" content="<?php echo htmlspecialchars($page_keywords ?? ''); ?>">
@@ -36,17 +51,18 @@ $canonical_url = $protocol . $_SERVER['HTTP_HOST'] . strtok($_SERVER['REQUEST_UR
 <meta property="og:title" content="<?php echo htmlspecialchars($page_title ?? '24/7 Sparky'); ?>">
 <meta property="og:description" content="<?php echo htmlspecialchars($page_description ?? ''); ?>">
 <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>">
-<meta property="og:image" content="<?php echo $protocol . $_SERVER['HTTP_HOST']; ?>/assets/icons/icon-512x512.png">
+<meta property="og:image" content="<?php echo $protocol . $_SERVER['HTTP_HOST']; ?>/assets/images/web-app-manifest-512x512">
 
 <!-- Favicons & Touch Icons -->
-<link rel="icon" type="image/png" href="/assets/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/images/favicon-96x96.webp" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
 <link rel="shortcut icon" href="/assets/images/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.webp" />
 
 <!-- PWA Primary Meta Tags & Manifest -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#facc15">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="24/7 Sparky">

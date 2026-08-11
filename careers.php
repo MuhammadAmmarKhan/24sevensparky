@@ -1,14 +1,14 @@
 <?php
 $page_slug = "careers";
 $page_title = "Electrician Jobs Sydney | Careers & Apprenticeships | 24/7 Sparky";
-$page_description = "Advance your career with 24/7 Sparky. We are hiring Level 2 ASP technicians, commercial electricians, and apprentices in Sydney with top market rates, modern vans, and paid training.";
-$page_keywords = "electrician jobs Sydney, Level 2 ASP vacancies Sydney, electrical apprenticeship Sydney 2026, electrical contractor careers, sparky jobs near me, electrician hiring Sydney";
+$page_description = "Advance your career with 24/7 Sparky. We are hiring commercial electricians, and apprentices in Sydney with top market rates, modern vans, and paid training.";
+$page_keywords = "electrician jobs Sydney, vacancies Sydney, electrical apprenticeship Sydney 2026, electrical contractor careers, sparky jobs near me, electrician hiring Sydney";
 ob_start(); ?>
 <section class="careers-hero position-relative min-vh-100 d-flex align-items-center justify-content-center overflow-hidden py-5 py-lg-5 bg-body" id="careers-overview">
 
     <!-- Background Image Layer with Theme-Adaptive Overlay & Glow Orbs -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img src="/assets/images/homebanner10.png" alt="Join Sydney Electrical Team Careers" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner10.webp" alt="Join Sydney Electrical Team Careers" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 
@@ -320,7 +320,7 @@ ob_start(); ?>
                     <div class="mb-4 p-3 rounded-3 bg-body-tertiary border border-body-subtle d-flex align-items-center justify-content-between">
                         <div>
                             <span class="extra-small text-body-secondary d-block text-uppercase fw-bold">Selected Role</span>
-                            <span class="fw-bold text-body" id="selectedJobDisplay">Senior Level 2 ASP Electrician</span>
+                            <span class="fw-bold text-body" id="selectedJobDisplay">Senior Electrician</span>
                         </div>
                         <i class="bi bi-briefcase-fill text-accent fs-4"></i>
                     </div>

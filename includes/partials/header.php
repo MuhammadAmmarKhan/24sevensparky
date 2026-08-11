@@ -60,7 +60,7 @@
                 <!-- CENTER: Brand Logo -->
                 <div class="d-flex justify-content-center align-items-center text-center">
                     <a class="navbar-brand text-uppercase m-0 p-0 d-flex align-items-center" href="/">
-                        <img id="navbarLogo" src="/assets/images/logo-black.png" alt="24/7 Sparky" class="img-fluid navbar-brand-logo">
+                        <img id="navbarLogo" src="/assets/images/logo-black.webp" alt="24/7 Sparky" class="img-fluid navbar-brand-logo">
                     </a>
                 </div>
 

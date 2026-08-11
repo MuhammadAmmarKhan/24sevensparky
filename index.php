@@ -9,7 +9,7 @@ ob_start(); ?>
 
     <!-- Background Image Layer with Theme-Adaptive Vignette -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img data-gsap="bg-img" src="/assets/images/homebanner13.png" alt="24Seven Sparky Sydney Electrical Services" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img data-gsap="bg-img" src="/assets/images/homebanner13.webp" alt="24Seven Sparky Sydney Electrical Services" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 
@@ -101,36 +101,123 @@ ob_start(); ?>
             </div>
 
             <!-- RIGHT COLUMN: Interactive Form Playground Card -->
+            <style>
+                /* Custom styling for standard and active state */
+                .btn-outline-custom {
+                    background-color: var(--bs-body-bg);
+                    border: 1px solid var(--bs-border-color-translucent);
+                    color: var(--bs-body-color);
+                    transition: all 0.2s ease-in-out;
+                }
+
+                .btn-outline-custom:hover {
+                    border-color: var(--bs-primary);
+                }
+
+                /* Active selected state matching green accent styling */
+                .btn-check:checked + .btn-outline-custom {
+                    background-color: rgba(132, 204, 22, 0.12) !important;
+                    border-color: #84cc16 !important;
+                    color: var(--bs-body-color) !important;
+                }
+
+                .btn-check:checked + .btn-outline-custom .card-check-badge {
+                    display: block !important;
+                }
+
+                /* Error Validation State */
+                .wizard-step.has-error .btn-outline-custom {
+                    border-color: var(--bs-danger) !important;
+                }
+
+                @keyframes shakeError {
+                    0%, 100% { transform: translateX(0); }
+                    20%, 60% { transform: translateX(-4px); }
+                    40%, 80% { transform: translateX(4px); }
+                }
+
+                .wizard-step.has-error {
+                    animation: shakeError 0.35s ease-in-out;
+                }
+
+                /* Step display management */
+                .wizard-step {
+                    display: none;
+                }
+
+                .wizard-step.active {
+                    display: block;
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(4px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
             <div class="col-lg-6 col-xl-5 col-xxl-5">
                 <div data-gsap="form-card" class="card border border-body-subtle shadow-lg rounded-4 overflow-hidden bg-body-tertiary backdrop-blur">
 
+                    <!-- Header with Dynamic Step Counter -->
                     <div class="card-header bg-black text-white p-4 border-bottom border-dark-subtle">
                         <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="badge bg-accent text-dark fw-bold text-uppercase px-2 py-1 rounded-pill" style="font-size: 0.65rem;">
-                                Instant Estimate
-                            </span>
-                            <span class="small text-white-50 fw-semibold">Step 1 of 2</span>
+                <span class="badge bg-accent text-dark fw-bold text-uppercase px-2 py-1 rounded-pill" style="font-size: 0.65rem;">
+                    Instant Estimate
+                </span>
+                            <span class="small text-white-50 fw-semibold" id="stepIndicatorText">Step 1 of 4</span>
                         </div>
                         <h4 class="fw-light text-uppercase m-0 text-white">Get Your Free Quote</h4>
                         <p class="small fw-normal text-white-50 m-0 mt-1">Tell us what you need, and our team will provide a fast, no-obligation estimate. Whether it's an urgent repair or a planned project, we're here to help.</p>
                     </div>
 
                     <div class="card-body p-4">
-                        <form id="gridConfiguratorForm">
+                        <?php if (isset($_GET['status'])): ?>
+                            <?php if ($_GET['status'] === 'success'): ?>
+                                <div class="alert alert-success alert-dismissible fade show rounded-3 mb-4" role="alert">
+                                    <i class="bi bi-check-circle-fill me-2"></i>
+                                    <strong>Success!</strong> <?php echo htmlspecialchars($_GET['msg'] ?? 'Your quote request has been sent.'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php elseif ($_GET['status'] === 'danger'): ?>
+                                <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                    <strong>Error:</strong> <?php echo htmlspecialchars($_GET['msg'] ?? 'Something went wrong.'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <form id="gridConfiguratorForm" action="/process-quote.php" method="POST" novalidate>
 
-                            <div class="mb-4">
+                            <!-- STEP 1: Main Category Selection -->
+                            <div class="wizard-step active" data-step="1">
                                 <label class="form-label text-uppercase fw-bold tracking-wider text-body-secondary mb-3" style="font-size: 0.75rem;">
-                                    1. What do you need help with? (Select one or both)
+                                    1. Select Primary Services (Select one or more)
                                 </label>
 
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="checkbox" class="btn-check service-trigger" id="serviceSolar" value="solar" autocomplete="off">
-                                        <label class="btn btn-outline-custom w-100 p-3 text-center rounded-3 d-flex flex-column align-items-center justify-content-center h-100 position-relative" for="serviceSolar">
-                                            <span class="card-check-badge position-absolute top-0 end-0 m-2 d-none">
-                                                <i class="bi bi-check-circle-fill text-accent"></i>
-                                            </span>
-                                            <svg class="mb-2 text-accent" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <div class="row g-2">
+                                    <!-- Electrical -->
+                                    <div class="col-4">
+                                        <input type="checkbox" class="btn-check category-trigger" id="catElectrical" name="primary_categories[]" value="electrical" autocomplete="off">
+                                        <label class="btn btn-outline-custom w-100 p-3 text-center rounded-3 d-flex flex-column align-items-center justify-content-center h-100 position-relative" for="catElectrical">
+                                <span class="card-check-badge position-absolute top-0 end-0 m-1 d-none">
+                                    <i class="bi bi-check-circle-fill text-accent"></i>
+                                </span>
+                                            <svg class="mb-2 text-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                            </svg>
+                                            <span class="fw-bold small text-body d-block">Electrical</span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Solar & Battery -->
+                                    <div class="col-4">
+                                        <input type="checkbox" class="btn-check category-trigger" id="catSolar" name="primary_categories[]" value="solar" autocomplete="off">
+                                        <label class="btn btn-outline-custom w-100 p-3 text-center rounded-3 d-flex flex-column align-items-center justify-content-center h-100 position-relative" for="catSolar">
+                                <span class="card-check-badge position-absolute top-0 end-0 m-1 d-none">
+                                    <i class="bi bi-check-circle-fill text-accent"></i>
+                                </span>
+                                            <svg class="mb-2 text-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <circle cx="12" cy="12" r="4"></circle>
                                                 <path d="M12 2v2"></path><path d="M12 20v2"></path>
                                                 <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
@@ -141,137 +228,391 @@ ob_start(); ?>
                                         </label>
                                     </div>
 
-                                    <div class="col-6">
-                                        <input type="checkbox" class="btn-check service-trigger" id="serviceEV" value="ev" autocomplete="off">
-                                        <label class="btn btn-outline-custom w-100 p-3 text-center rounded-3 d-flex flex-column align-items-center justify-content-center h-100 position-relative" for="serviceEV">
-                                            <span class="card-check-badge position-absolute top-0 end-0 m-2 d-none">
-                                                <i class="bi bi-check-circle-fill text-accent"></i>
-                                            </span>
-                                            <svg class="mb-2 text-accent" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- EV Fast Charger -->
+                                    <div class="col-4">
+                                        <input type="checkbox" class="btn-check category-trigger" id="catEV" name="primary_categories[]" value="ev" autocomplete="off">
+                                        <label class="btn btn-outline-custom w-100 p-3 text-center rounded-3 d-flex flex-column align-items-center justify-content-center h-100 position-relative" for="catEV">
+                                <span class="card-check-badge position-absolute top-0 end-0 m-1 d-none">
+                                    <i class="bi bi-check-circle-fill text-accent"></i>
+                                </span>
+                                            <svg class="mb-2 text-accent" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 .6.4 1 1 1h2"></path>
                                                 <circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle>
                                                 <path d="M9 17h6"></path><path d="M14 2v4"></path><path d="M12 4h4"></path>
                                             </svg>
-                                            <span class="fw-bold small text-body d-block">EV Fast Charger</span>
+                                            <span class="fw-bold small text-body d-block">EV Charger</span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="solarOptionsSection" class="configurator-step-section d-none mb-4 pt-3 border-top border-body-subtle">
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-accent text-dark rounded-circle p-1 d-inline-flex"><i class="bi bi-sun-fill"></i></span>
-                                    <h6 class="fw-bold m-0 text-body">Solar &amp; Battery Details</h6>
+                            <!-- STEP 2: Sub-Services Details -->
+                            <div class="wizard-step" data-step="2">
+                                <!-- Electrical Options -->
+                                <div id="electricalSubSection" class="d-none mb-4">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+        <span class="badge bg-accent text-dark rounded-circle p-1 d-inline-flex">
+            <i class="bi bi-lightning-charge-fill"></i>
+        </span>
+                                        <h6 class="fw-bold m-0 text-body">Electrical Services Needed</h6>
+                                    </div>
+                                    <div class="row g-2 mb-3 sub-group">
+                                        <!-- Power Points & Switches -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecPower" value="Power Points & Switches">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecPower">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
+                                                    <line x1="8" y1="12" x2="8" y2="16"></line>
+                                                    <line x1="16" y1="12" x2="16" y2="16"></line>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Power Points &amp; Switches</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Switchboard & Safety -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecSwitchboard" value="Switchboard & RCD">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecSwitchboard">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                                    <rect x="8" y="8" width="8" height="8" rx="1"></rect>
+                                                    <path d="M12 2v2"></path>
+                                                    <path d="M12 20v2"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Switchboard &amp; Safety</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- LED & Downlights -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecLighting" value="LED & Downlights">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecLighting">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M9 18h6"></path>
+                                                    <path d="M10 22h4"></path>
+                                                    <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.59 2.87 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">LED &amp; Downlights</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Rewiring & Renovations -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecRewiring" value="Rewiring & Renovations">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecRewiring">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M18 12h.01"></path>
+                                                    <path d="M6 12h.01"></path>
+                                                    <path d="M12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6z"></path>
+                                                    <path d="M4.22 4.22l15.56 15.56"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Rewiring &amp; Reno</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Ceiling & Exhaust Fans -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecFans" value="Ceiling & Exhaust Fans">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecFans">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                                    <path d="M12 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"></path>
+                                                    <path d="M12 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"></path>
+                                                    <path d="M12 12a3 3 0 1 0-6 0 3 3 0 0 0 6 0z"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Ceiling &amp; Exhaust Fans</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Emergency Fault / Repair -->
+                                        <div class="col-6">
+                                            <input type="checkbox" class="btn-check" name="electrical_services[]" id="elecEmergency" value="Emergency Repair">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="elecEmergency">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"></path>
+                                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Emergency Fault / Repair</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Roof Type</label>
-                                <div class="row mb-3">
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="roofType" id="roofGable" value="gable">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofGable">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 9-18 9 18H3z"/></svg>
-                                            <span class="extra-small fw-bold text-body">Gable</span>
-                                        </label>
+                                <!-- Solar Options -->
+                                <div id="solarSubSection" class="d-none mb-4 pt-2 border-top border-body-subtle">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-accent text-dark rounded-circle p-1 d-inline-flex"><i class="bi bi-sun-fill"></i></span>
+                                        <h6 class="fw-bold m-0 text-body">Solar &amp; Battery Details</h6>
                                     </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="roofType" id="roofFlat" value="flat">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofFlat">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18h20V6H2v12z"/></svg>
-                                            <span class="extra-small fw-bold text-body">Flat</span>
-                                        </label>
+
+                                    <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Roof Type</label>
+                                    <div class="row mb-3 g-2 sub-group">
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="roofType" id="roofGable" value="gable">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofGable">
+                                                <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 9-18 9 18H3z"/></svg>
+                                                <span class="extra-small fw-bold text-body">Gable</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="roofType" id="roofFlat" value="flat">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofFlat">
+                                                <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18h20V6H2v12z"/></svg>
+                                                <span class="extra-small fw-bold text-body">Flat</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="roofType" id="roofPitched" value="pitched">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofPitched">
+                                                <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20 12 4l10 16H2z"/></svg>
+                                                <span class="extra-small fw-bold text-body">Pitched</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="roofType" id="roofMisc" value="misc">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofMisc">
+                                                <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/></svg>
+                                                <span class="extra-small fw-bold text-body">Other</span>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="roofType" id="roofPitched" value="pitched">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofPitched">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20 12 4l10 16H2z"/></svg>
-                                            <span class="extra-small fw-bold text-body">Pitched</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="roofType" id="roofMisc" value="misc">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="roofMisc">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/></svg>
-                                            <span class="extra-small fw-bold text-body">Other</span>
-                                        </label>
+
+                                    <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Roof Direction</label>
+                                    <div class="row g-2 sub-group">
+                                        <!-- North -->
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="houseFacing" id="facingNorth" value="north">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="facingNorth">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polygon points="12 6 15 12 12 10 9 12 12 6" fill="currentColor"></polygon>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">North</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- East / West -->
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="houseFacing" id="facingEastWest" value="east_west">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="facingEastWest">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <path d="M8 12h8"></path>
+                                                    <path d="m10 10-2 2 2 2"></path>
+                                                    <path d="m14 10 2 2-2 2"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">East/West</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- South -->
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="houseFacing" id="facingSouth" value="south">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="facingSouth">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polygon points="12 18 15 12 12 14 9 12 12 18" fill="currentColor"></polygon>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">South</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Unsure -->
+                                        <div class="col-6 col-sm-3">
+                                            <input type="radio" class="btn-check" name="houseFacing" id="facingUnsure" value="unsure">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="facingUnsure">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Unsure</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Which Way Does Your Roof Face?</label>
-                                <div class="row">
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="houseFacing" id="facingNorth" value="north">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="facingNorth">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-8-4 8 4-2 4 2z"/></svg>
-                                            <span class="extra-small fw-bold text-body">North</span>
-                                        </label>
+                                <!-- EV Options -->
+                                <div id="evSubSection" class="d-none mb-4 pt-2 border-top border-body-subtle">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <span class="badge bg-accent text-dark rounded-circle p-1 d-inline-flex"><i class="bi bi-ev-front-fill"></i></span>
+                                        <h6 class="fw-bold m-0 text-body">EV Charger Setup</h6>
                                     </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="houseFacing" id="facingEastWest" value="east_west">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="facingEastWest">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
-                                            <span class="extra-small fw-bold text-body">East/West</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="houseFacing" id="facingSouth" value="south">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="facingSouth">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 4 8 4-8-4 2-4-2z"/></svg>
-                                            <span class="extra-small fw-bold text-body">South</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-6 col-sm-3">
-                                        <input type="radio" class="btn-check" name="houseFacing" id="facingUnsure" value="unsure">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="facingUnsure">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                                            <span class="extra-small fw-bold text-body">Unsure</span>
-                                        </label>
+
+                                    <div class="row g-2 sub-group">
+                                        <!-- Tesla Wall -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="evBrand" id="evTesla" value="tesla">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="evTesla">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M12 2L5 6v12l7 4 7-4V6l-7-4z"></path>
+                                                    <path d="M12 8v8"></path>
+                                                    <path d="M8 10h8"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body d-block">Tesla Wall</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Bring My Own -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="evBrand" id="evOther" value="other_byo">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="evOther">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body d-block">Bring My Own</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Not Sure -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="evBrand" id="evNotSure" value="not_sure">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="evNotSure">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body d-block">Not Sure</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="evOptionsSection" class="configurator-step-section d-none mb-4 pt-3 border-top border-body-subtle">
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-accent text-dark rounded-circle p-1 d-inline-flex"><i class="bi bi-ev-front-fill"></i></span>
-                                    <h6 class="fw-bold m-0 text-body">EV Charger Setup</h6>
+                            <!-- STEP 3: Property Type & Urgency -->
+                            <div class="wizard-step" data-step="3">
+                                <!-- Property Type -->
+                                <div class="mb-4">
+                                    <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Property Type</label>
+                                    <div class="row g-2">
+                                        <!-- Residential -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="property_type" id="propResidential" value="Residential" checked>
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="propResidential">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Residential</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Commercial -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="property_type" id="propCommercial" value="Commercial">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="propCommercial">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                                                    <path d="M9 22v-4h6v4"></path>
+                                                    <path d="M8 6h.01"></path>
+                                                    <path d="M16 6h.01"></path>
+                                                    <path d="M12 6h.01"></path>
+                                                    <path d="M12 10h.01"></path>
+                                                    <path d="M12 14h.01"></path>
+                                                    <path d="M16 10h.01"></path>
+                                                    <path d="M16 14h.01"></path>
+                                                    <path d="M8 10h.01"></path>
+                                                    <path d="M8 14h.01"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Commercial</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Strata / Other -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="property_type" id="propStrata" value="Strata / Other">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="propStrata">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"></path>
+                                                    <path d="M6 12H4a2 2 0 0 0-2 2v8"></path>
+                                                    <path d="M18 9h2a2 2 0 0 1 2 2v11"></path>
+                                                    <path d="M10 6h4"></path>
+                                                    <path d="M10 10h4"></path>
+                                                    <path d="M10 14h4"></path>
+                                                    <path d="M10 18h4"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body">Strata / Other</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input type="radio" class="btn-check" name="evBrand" id="evTesla" value="tesla">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="evTesla">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                            <span class="extra-small fw-bold text-body d-block">Tesla Wall</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="radio" class="btn-check" name="evBrand" id="evOther" value="other_byo">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="evOther">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                                            <span class="extra-small fw-bold text-body d-block">Bring My Own</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="radio" class="btn-check" name="evBrand" id="evNotSure" value="not_sure">
-                                        <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3" for="evNotSure">
-                                            <svg class="d-block mx-auto mb-1 text-accent" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                                            <span class="extra-small fw-bold text-body d-block">Not Sure</span>
-                                        </label>
+                                <!-- Urgency -->
+                                <div class="mb-3 pt-2 border-top border-body-subtle">
+                                    <label class="form-label text-uppercase fw-bold text-body-secondary mb-2" style="font-size: 0.7rem;">Job Urgency / Timeline</label>
+                                    <div class="row g-2">
+                                        <!-- Urgent (24/7) -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="urgency" id="urgencyEmergency" value="24/7 Emergency">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="urgencyEmergency">
+                                                <svg class="mb-1 text-danger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body text-danger d-block">Urgent (24/7)</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- 24–48 Hours -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="urgency" id="urgencySoon" value="24-48 Hours" checked>
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="urgencySoon">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body d-block">24–48 Hours</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Flexible -->
+                                        <div class="col-4">
+                                            <input type="radio" class="btn-check" name="urgency" id="urgencyFlexible" value="Flexible">
+                                            <label class="btn btn-outline-custom w-100 p-2 text-center rounded-3 d-flex flex-column align-items-center justify-content-center" for="urgencyFlexible">
+                                                <svg class="mb-1 text-accent" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                                    <path d="m9 16 2 2 4-4"></path>
+                                                </svg>
+                                                <span class="extra-small fw-bold text-body d-block">Flexible</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="contactDetailsSection" class="pt-3 border-top border-body-subtle">
-                                <div class="row mb-3">
-                                    <div class="col-6">
-                                        <input type="text" class="form-control form-control-sm rounded-3 py-2 bg-body text-body border-body-subtle" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="tel" class="form-control form-control-sm rounded-3 py-2 bg-body text-body border-body-subtle" placeholder="Phone (04XX XXX XXX)" required>
-                                    </div>
+                            <!-- STEP 4: Contact Details -->
+                            <div class="wizard-step" data-step="4">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-sm rounded-3 py-2 mb-2 bg-body text-body border-body-subtle" name="full_name" id="fullName" placeholder="Your Name *" required>
+                                    <input type="tel" class="form-control form-control-sm rounded-3 py-2 mb-2 bg-body text-body border-body-subtle" name="phone_number" id="phoneNumber" placeholder="Phone (04XX XXX XXX) *" required>
+                                    <input type="email" class="form-control form-control-sm rounded-3 py-2 mb-2 bg-body text-body border-body-subtle" name="email_address" id="emailAddress" placeholder="Email Address *" required>
+                                    <textarea class="form-control form-control-sm rounded-3 py-2 bg-body text-body border-body-subtle" name="job_description" rows="2" placeholder="Brief job details (e.g. power point installation)..."></textarea>
                                 </div>
+                            </div>
 
-                                <button type="submit" class="btn btn-power w-100 py-3 rounded-3 fw-bold text-uppercase tracking-wider shadow-sm d-flex align-items-center justify-content-center gap-2">
-                                    <i class="bi bi-lightning-charge-fill"></i> Get My Instant Estimate
+                            <!-- Error Notice Message Container -->
+                            <div id="stepErrorMessage" class="alert alert-danger py-2 px-3 mb-0 mt-3 d-none align-items-center gap-2 rounded-3 small" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                <span id="errorMessageText">Please select an option to proceed.</span>
+                            </div>
+
+                            <!-- Navigation Controls -->
+                            <div class="d-flex gap-2 mt-4 pt-3 border-top border-body-subtle">
+                                <button type="button" id="prevBtn" class="btn btn-outline-secondary w-50 py-2 rounded-3 fw-bold text-uppercase d-none">
+                                    Back
+                                </button>
+                                <button type="button" id="nextBtn" class="btn btn-power w-100 py-3 rounded-3 fw-bold text-uppercase tracking-wider shadow-sm d-flex align-items-center justify-content-center gap-2">
+                                    Next Step <i class="bi bi-arrow-right"></i>
+                                </button>
+                                <button type="submit" id="submitBtn" class="btn btn-power w-100 py-3 rounded-3 fw-bold text-uppercase tracking-wider shadow-sm d-none align-items-center justify-content-center gap-2">
+                                    <i class="bi bi-lightning-charge-fill"></i> Get Instant Estimate
                                 </button>
                             </div>
 
@@ -432,13 +773,13 @@ ob_start(); ?>
         </div>
 
         <!-- Lower Visual Banner Showcase -->
-        <div class="card border-0 rounded-4 overflow-hidden shadow-lg bg-dark text-white">
+        <div class="card border-0 rounded-4 overflow-hidden shadow-lg bg-black text-white">
             <div class="row g-0 align-items-stretch">
 
                 <!-- Left Image/Visual -->
                 <div class="col-lg-6 position-relative min-vh-30 min-vh-lg-100">
                     <img class="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-                         src="assets/images/rooftop-electrician.png"
+                         src="assets/images/rooftop-electrician.webp"
                          alt="Licensed Australian electrician performing quality service" />
                 </div>
 
@@ -1052,7 +1393,7 @@ ob_start(); ?>
 
     <!-- Background Image Layer with Theme-Adaptive Vignette -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0">
-        <img src="/assets/images/homebanner3.png" alt="24Seven Sparky How It Works Process" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner3.webp" alt="24Seven Sparky How It Works Process" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
     </div>
 
@@ -1261,8 +1602,8 @@ ob_start(); ?>
 
                     <!-- Chip Badge -->
                     <div class="badge bg-accent text-dark fw-bold text-uppercase px-2 py-1 rounded-pill">
-                        <i class="fas fa-comments-dollar"></i>
-                        <span>Oran Park & Western Sydney FAQs</span>
+                        <i class="fas fa-comments-dollar me-1"></i>
+                        <span>Sydney-Wide Electrical &amp; Solar FAQs</span>
                     </div>
 
                     <!-- Main Heading -->
@@ -1273,23 +1614,23 @@ ob_start(); ?>
 
                     <!-- Sub Heading -->
                     <h3 class="h6 fw-bold text-uppercase tracking-wider text-body-secondary mb-3">
-                        No BS Local Trade Advice
+                        No BS Trade Advice From Licensed NSW Electricians
                     </h3>
 
                     <!-- Paragraph -->
                     <p class="text-body-secondary fs-6 mb-4" style="line-height: 1.6;">
-                        Got doubts about going solar or adding a battery out in Oran Park or Western Sydney? Here is the honest truth from local sparkies who actually work on the roofs and main switchboards daily.
+                        Got questions about 24/7 emergency response, solar installs, EV chargers, or switchboard upgrades across Sydney? Here is the honest truth from certified local sparkies who service homes and commercial properties daily.
                     </p>
 
                     <!-- CTA Button Group -->
                     <div class="d-flex flex-column gap-3 align-items-start">
                         <a href="#contact" class="btn btn-power text-white fw-bold px-4 py-3 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm">
-                            <span>Get An Oran Park Sparky Out</span>
+                            <span>Get A Sydney Sparky Out</span>
                             <i class="fas fa-arrow-right text-black"></i>
                         </a>
                         <div class="d-flex align-items-center gap-2 extra-small fw-bold text-body-secondary ms-1">
                             <i class="fas fa-shield-halved text-accent fs-6"></i>
-                            <span>100% Workmanship Guarantee</span>
+                            <span>100% Workmanship Guarantee | NSW Lic: 491657C</span>
                         </div>
                     </div>
 
@@ -1300,129 +1641,164 @@ ob_start(); ?>
             <div class="col-lg-7">
                 <div class="accordion accordion-flush d-flex flex-column gap-3" id="faqAccordion">
 
-                    <!-- FAQ Item 1: Solar Rebates & ROI -->
+                    <!-- FAQ Item 1: 24/7 Emergency Response (GEO/AEO Prime Target) -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingOne">
                             <button class="accordion-button py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-solar-panel text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Are solar power systems worth it in Western Sydney?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-bolt text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">How fast can an emergency electrician respond in Sydney?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Yes, rooftop solar remains one of the highest-yielding home investments in Sydney.</strong> Due to Western Sydney's high solar irradiance, a typical residential solar array pays for itself within 3 to 5 years by reducing quarterly power bills by up to 70%.
+                                    <strong>24/7 Sparky dispatches licensed emergency electricians across Greater Sydney 24 hours a day, 7 days a week.</strong> For critical emergencies—such as total power failure, burning electrical smells, active sparking, or tripped safety switches—our mobile trade units aim for an immediate priority response.
                                 </p>
                                 <div class="bg-body p-3 rounded-3 border">
-                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Key Local Financial Benefits:</strong>
+                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Common Emergency Services We Handle On-Site:</strong>
                                     <ul class="text-body-secondary small mb-0 ps-3">
-                                        <li class="mb-1"><strong>NSW STC Rebates:</strong> Upfront federal point-of-sale discounts applied directly to your system cost.</li>
-                                        <li class="mb-1"><strong>Grid Feed-In Tariffs:</strong> Sell excess daytime solar energy back to your retail energy provider.</li>
-                                        <li><strong>Property Value:</strong> Homes with CEC-accredited solar installations consistently command higher resale value.</li>
+                                        <li class="mb-1"><strong>Power Restoration:</strong> Rapid fault finding for residential &amp; commercial blackouts.</li>
+                                        <li class="mb-1"><strong>Switchboard Hazards:</strong> Blown fuses, melted circuit breakers, and RCD replacements.</li>
+                                        <li><strong>Storm Damage:</strong> Emergency isolation for water-damaged wiring or fallen service lines.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 2: Solar Battery Storage & Night Use -->
+                    <!-- FAQ Item 2: Switchboard Upgrades & AS/NZS 3000 Compliance -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingTwo">
                             <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-battery-full text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">How does adding a solar battery lower electricity bills?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-sliders text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Why do Sydney homes need a switchboard upgrade?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>A solar battery stores excess electricity generated during peak daylight hours so your home can run on free stored solar power at night.</strong> This protects you from peak electricity rates (typically charged between 4 PM and 9 PM by energy retailers).
+                                    <strong>Older Sydney switchboards with ceramic fuses or asbestos backing panels pose high fire hazards and fail to handle modern electrical loads.</strong> Under Australian Standards (AS/NZS 3000 Wiring Rules), modern homes require safety switches (RCDs) on every circuit to prevent electrocution and electrical fires.
                                 </p>
                                 <p class="text-body-secondary small mb-0">
-                                    With blackout protection (EPS mode) enabled, your battery system also acts as an automated emergency backup power supply if the main street grid fails during severe summer storms.
+                                    Upgrading your electrical board is also essential prior to installing solar systems, EV wall chargers, induction cooktops, or high-capacity air conditioning units.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 3: EV Charger Solar Integration -->
+                    <!-- FAQ Item 3: Solar ROI & Sydney Financial Rebates -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingThree">
                             <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-charging-station text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Can electric vehicle (EV) wall chargers be integrated with solar?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-solar-panel text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Are solar panels and battery storage worth it in Sydney?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Yes, smart EV chargers can be configured to charge your electric vehicle using 100% free rooftop solar energy.</strong> We install single-phase and three-phase Level 2 EV wall chargers equipped with solar-matching modes that dynamically balance charging speeds based on live rooftop output.
+                                    <strong>Yes, rooftop solar and battery storage deliver excellent return on investment across Sydney.</strong> A CEC-accredited solar system reduces quarterly power bills by up to 70%, typically paying itself off within 3 to 5 years. Adding a battery lets you store excess day generation to run your home on free energy through peak evening power rates.
                                 </p>
-                                <div class="row text-center extra-small text-uppercase fw-bold text-secondary">
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Tesla Compatible</div></div>
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Type 2 Universal</div></div>
-                                    <div class="col-4"><div class="p-2 border rounded bg-body">Smart Solar Match</div></div>
+                                <div class="bg-body p-3 rounded-3 border">
+                                    <strong class="d-block mb-2 text-body extra-small text-uppercase tracking-wider">Government Rebates &amp; Financial Perks:</strong>
+                                    <ul class="text-body-secondary small mb-0 ps-3">
+                                        <li class="mb-1"><strong>Federal STCs:</strong> Upfront point-of-sale discounts on eligible solar installations.</li>
+                                        <li class="mb-1"><strong>Feed-in Tariffs:</strong> Earn grid credits for excess solar electricity exported back to the grid.</li>
+                                        <li><strong>NSW Energy Battery Incentives:</strong> Save on upfront battery installation costs via state schemes.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- FAQ Item 4: Smart EV Charger Installation -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingFour">
                             <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-bolt text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">Do you provide 24/7 emergency electrical services & board upgrades?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-charging-station text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Can EV wall chargers be integrated with existing solar panels?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
-                                <p class="text-body-secondary mb-0" style="line-height: 1.6;">
-                                    <strong>Too right we do.</strong> We provide 24/7 rapid emergency electrician dispatch across Oran Park and South West Sydney for dangerous power outages, burnt switchboards, and safety switch trips. We also perform complete switchboard upgrades, replacing outdated ceramic fuses with modern RCD safety switches to comply with NSW AS/NZS 3000 safety regulations.
+                                <p class="text-body-secondary mb-3" style="line-height: 1.6;">
+                                    <strong>Yes, smart Level 2 EV chargers can dynamically sync with your rooftop solar array to charge your electric vehicle for free.</strong> We install single-phase (7.4kW) and three-phase (22kW) wallbox chargers equipped with solar-matching tech for all major EV models.
                                 </p>
+                                <div class="row text-center extra-small text-uppercase fw-bold text-secondary g-2">
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Tesla Ready</div></div>
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Type 2 Universal</div></div>
+                                    <div class="col-4"><div class="p-2 border rounded bg-body">Solar Match Mode</div></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 5: Local Coverage & Compliance -->
+                    <!-- FAQ Item 5: Compliance & Certification (SEO/AEO Authority) -->
                     <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
                         <h3 class="accordion-header mb-0" id="headingFive">
                             <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <span class="d-flex align-items-center gap-3">
-                    <i class="fas fa-location-dot text-accent fs-5"></i>
-                    <span class="fw-semibold fs-5 text-uppercase">What Sydney suburbs are covered by your electrical team?</span>
-                </span>
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-certificate text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Are your electricians licensed, insured, and certified in NSW?</span>
+                                </span>
                             </button>
                         </h3>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
                             <div class="accordion-body px-4 pb-4 pt-0">
                                 <hr class="border-secondary opacity-10 mt-0 mb-3">
+                                <p class="text-body-secondary mb-0" style="line-height: 1.6;">
+                                    <strong>Absolutely.</strong> 24/7 Sparky operates under NSW Electrical Contractor License <strong>491657C</strong>. Every electrician on our team is fully licensed, insured, and certified by the Clean Energy Council (CEC) for solar and battery installations. We issue a Compliance Certificate (CCEW) upon completion of electrical work to ensure 100% safety and regulatory adherence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6: Geographic Coverage (Local SEO & GEO Keywords) -->
+                    <div class="accordion-item bg-body-tertiary border rounded-4 overflow-hidden shadow-sm">
+                        <h3 class="accordion-header mb-0" id="headingSix">
+                            <button class="accordion-button collapsed py-4 px-4 bg-body-tertiary text-body fw-bold fs-5 shadow-none d-flex align-items-center justify-content-between gap-3"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <span class="d-flex align-items-center gap-3">
+                                    <i class="fas fa-location-dot text-accent fs-5"></i>
+                                    <span class="fw-semibold fs-5 text-uppercase">Which areas of Sydney do you service?</span>
+                                </span>
+                            </button>
+                        </h3>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body px-4 pb-4 pt-0">
+                                <hr class="border-secondary opacity-10 mt-0 mb-3">
                                 <p class="text-body-secondary mb-3" style="line-height: 1.6;">
-                                    <strong>Our trade vans operate daily across Oran Park, the Macarthur region, and Greater Western Sydney.</strong> We manage local grid connection approvals directly with network distributors like Endeavour Energy.
+                                    <strong>Our mobile fleets cover all regions across Sydney and Greater Western Sydney.</strong> We manage local grid connection applications directly with network distributors including Endeavour Energy and Ausgrid.
                                 </p>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-body border text-body font-monospace">Oran Park (2570)</span>
-                                    <span class="badge bg-body border text-body font-monospace">Gregory Hills</span>
-                                    <span class="badge bg-body border text-body font-monospace">Narellan</span>
-                                    <span class="badge bg-body border text-body font-monospace">Camden</span>
-                                    <span class="badge bg-body border text-body font-monospace">Campbelltown</span>
-                                    <span class="badge bg-body border text-body font-monospace">Liverpool</span>
+                                    <span class="badge bg-body border text-body font-monospace">Sydney CBD</span>
+                                    <span class="badge bg-body border text-body font-monospace">Western Sydney</span>
+                                    <span class="badge bg-body border text-body font-monospace">Oran Park</span>
+                                    <span class="badge bg-body border text-body font-monospace">Parramatta</span>
                                     <span class="badge bg-body border text-body font-monospace">Penrith</span>
+                                    <span class="badge bg-body border text-body font-monospace">Liverpool</span>
+                                    <span class="badge bg-body border text-body font-monospace">Campbelltown</span>
+                                    <span class="badge bg-body border text-body font-monospace">Inner West</span>
+                                    <span class="badge bg-body border text-body font-monospace">Hills District</span>
+                                    <span class="badge bg-body border text-body font-monospace">Sutherland Shire</span>
+                                    <span class="badge bg-body border text-body font-monospace">Northern Beaches</span>
                                 </div>
                             </div>
                         </div>
@@ -1461,11 +1837,11 @@ ob_start(); ?>
                     <!-- Before / After Grid Badge Display -->
                     <div class="row">
                         <div class="col-6 position-relative  rounded-3 overflow-hidden">
-                            <img src="/assets/images/before.png" class="img-fluid border border-secondary border-opacity-25 w-100" style="height: 220px; object-fit: cover;" alt="Old Switchboard Before">
+                            <img src="/assets/images/before.webp" class="img-fluid border border-secondary border-opacity-25 w-100" style="height: 220px; object-fit: cover;" alt="Old Switchboard Before">
                             <span class="position-absolute top-0 start-0 m-3 badge bg-danger text-uppercase fw-bold extra-small" style="z-index: 2;">Before (Non-Compliant)</span>
                         </div>
                         <div class="col-6 position-relative  rounded-3 overflow-hidden">
-                            <img src="/assets/images/after.png" class="img-fluid border border-accent w-100" style="height: 220px; object-fit: cover;" alt="New Switchboard After">
+                            <img src="/assets/images/after.webp" class="img-fluid border border-accent w-100" style="height: 220px; object-fit: cover;" alt="New Switchboard After">
                             <span class="position-absolute top-0 start-0 m-3 badge bg-accent text-dark text-uppercase fw-black extra-small" style="z-index: 2;">After (24/7 Sparky Upgrade)</span>
                         </div>
                     </div>
@@ -1530,11 +1906,11 @@ ob_start(); ?>
             <div class="col-lg-7">
                 <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-accent text-dark extra-small fw-bold text-uppercase tracking-wider mb-3">
                     <i class="fas fa-camera text-dark"></i>
-                    <span>Real Jobs. Real Oran Park Sites.</span>
+                    <span>Real Jobs. Real Sites.</span>
                 </div>
                 <h2 class="display-5 fw-black text-uppercase tracking-tight text-body m-0">
-                    On The Tools Across<br>
-                    <span class="text-accent">Western Sydney.</span>
+                    On The Tools<br>
+                    <span class="text-accent">Across Sydney.</span>
                 </h2>
             </div>
             <div class="col-lg-5 mt-3 mt-lg-0 text-lg-end">
@@ -1557,7 +1933,7 @@ ob_start(); ?>
             <div class="marquee-track-left">
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/solar-panel-installation.png" class="media-card" alt="Solar Panel Installation">
+                    <img src="assets/images/solar-panel-installation.webp" class="media-card" alt="Solar Panel Installation">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Solar Installation</span>
                         <span class="small fw-bold text-white">6.6kW System • Oran Park</span>
@@ -1565,7 +1941,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/ev-charger-installation.png" class="media-card" alt="EV Charger Installation">
+                    <img src="assets/images/ev-charger-installation.webp" class="media-card" alt="EV Charger Installation">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">EV Charger</span>
                         <span class="small fw-bold text-white">22kW Fast Charger • Gregory Hills</span>
@@ -1573,7 +1949,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/office-fit-outs.png" class="media-card" alt="Office Fit-Outs">
+                    <img src="assets/images/office-fit-outs.webp" class="media-card" alt="Office Fit-Outs">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Commercial Electrical</span>
                         <span class="small fw-bold text-white">Factory Warehouse • Camden</span>
@@ -1581,7 +1957,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/led-downlights.png" class="media-card" alt="LED Downlights">
+                    <img src="assets/images/led-downlights.webp" class="media-card" alt="LED Downlights">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Architectural Lighting</span>
                         <span class="small fw-bold text-white">New Build • Harrington Park</span>
@@ -1596,7 +1972,7 @@ ob_start(); ?>
             <div class="marquee-track-right">
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/switchboard-upgrade.png" class="media-card" alt="Switchboard Upgrades">
+                    <img src="assets/images/switchboard-upgrade.webp" class="media-card" alt="Switchboard Upgrades">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Safety Upgrade</span>
                         <span class="small fw-bold text-white">3-Phase Board • Narellan</span>
@@ -1604,7 +1980,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/solar-battery-installation.png" class="media-card" alt="Solar Battery Storage">
+                    <img src="assets/images/solar-battery-installation.webp" class="media-card" alt="Solar Battery Storage">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Battery Bank</span>
                         <span class="small fw-bold text-white">10kWh Storage • Oran Park</span>
@@ -1612,7 +1988,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/diagonostic-repair.png" class="media-card" alt="Emergency Sparky Callout">
+                    <img src="assets/images/diagonostic-repair.webp" class="media-card" alt="Emergency Sparky Callout">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Emergency Response</span>
                         <span class="small fw-bold text-white">24/7 Power Restore • Campbelltown</span>
@@ -1620,7 +1996,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="media-card-wrapper position-relative rounded-4 overflow-hidden bg-dark shadow-sm">
-                    <img src="assets/images/rooftop-electrician.png" class="media-card" alt="Rooftop Solar Rig">
+                    <img src="assets/images/rooftop-electrician.webp" class="media-card" alt="Rooftop Solar Rig">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 backdrop-blur">
                         <span class="extra-small fw-bold text-white text-uppercase d-block">Rooftop Solar</span>
                         <span class="small fw-bold text-white">10kW Commercial • Western Sydney</span>

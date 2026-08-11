@@ -1,15 +1,15 @@
 <?php
 $page_slug = "safety-and-licensing";
-$page_title = "Safety & Licensing | NSW Level 2 ASP & AS/NZS 3000 Certified Sparkies";
-$page_description = "Fully licensed, insured, and accredited NSW Level 2 ASP electricians. Certified CCEW compliance, zero-defect guarantees, and strict WHS/ISO safety protocols.";
-$page_keywords = "NSW electrical license check, AS NZS 3000 compliance Sydney, CCEW certificate electrician, Level 2 ASP credentials, WHS electrical safety Sydney, ISO 9001 electrician";
+$page_title = "Safety & Licensing | NSW AS/NZS 3000 Certified Sparkies";
+$page_description = "Fully licensed, insured, and accredited NSW electricians. Certified CCEW compliance, zero-defect guarantees, and strict WHS/ISO safety protocols.";
+$page_keywords = "NSW electrical license check, AS NZS 3000 compliance Sydney, CCEW certificate electrician, WHS electrical safety Sydney, ISO 9001 electrician";
 ob_start(); ?>
 <!-- SAFETY & LICENSING HERO SECTION -->
 <section class="safety-hero position-relative min-vh-100 d-flex align-items-center justify-content-center overflow-hidden py-5 py-lg-5 bg-body">
 
     <!-- Background Image Layer with Theme-Adaptive Overlay & Glow Orbs -->
     <div class="hero-bg-wrapper position-absolute top-0 start-0 w-100 h-100 z-0 overflow-hidden">
-        <img src="/assets/images/homebanner6.png" alt="Sydney Electrical Safety & Compliance" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
+        <img src="/assets/images/homebanner6.webp" alt="Sydney Electrical Safety & Compliance" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-25">
         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay-gradient"></div>
         <div class="hero-glow-orb hero-glow-orb-1 position-absolute top-0 start-0 translate-middle rounded-circle"></div>
         <div class="hero-glow-orb hero-glow-orb-2 position-absolute bottom-0 end-0 translate-middle rounded-circle"></div>
@@ -183,7 +183,7 @@ ob_start(); ?>
                             <div>
                                 <!-- Integrated Visual Header -->
                                 <div class="position-relative rounded-3 overflow-hidden mb-4 ratio ratio-16x9">
-                                    <img src="/assets/images/audited-work-health-safety.png" alt="Work Health and Safety ISO 45001 Assessment" class="object-fit-cover w-100 h-100">
+                                    <img src="/assets/images/audited-work-health-safety.webp" alt="Work Health and Safety ISO 45001 Assessment" class="object-fit-cover w-100 h-100">
                                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-to-t opacity-50" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
                                     <div class="position-absolute bottom-0 start-0 p-3 w-100 d-flex align-items-center justify-content-between z-2">
                                         <span class="badge bg-accent text-dark text-uppercase fw-semibold extra-small">ISO 45001 Certification</span>
@@ -211,7 +211,7 @@ ob_start(); ?>
                             <div>
                                 <!-- Integrated Visual Header -->
                                 <div class="position-relative rounded-3 overflow-hidden mb-4 ratio ratio-16x9">
-                                    <img src="/assets/images/detect-free-qa.png" alt="Quality Assurance ISO 9001 Testing" class="object-fit-cover w-100 h-100">
+                                    <img src="/assets/images/detect-free-qa.webp" alt="Quality Assurance ISO 9001 Testing" class="object-fit-cover w-100 h-100">
                                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-to-t opacity-50" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
                                     <div class="position-absolute bottom-0 start-0 p-3 w-100 d-flex align-items-center justify-content-between z-2">
                                         <span class="badge bg-accent text-dark text-uppercase fw-semibold extra-small">ISO 9001 Certification</span>
@@ -239,7 +239,7 @@ ob_start(); ?>
                             <div>
                                 <!-- Integrated Visual Header -->
                                 <div class="position-relative rounded-3 overflow-hidden mb-4 ratio ratio-16x9">
-                                    <img src="/assets/images/environmental-protection.png" alt="Environmental Management ISO 14001 Recycling" class="object-fit-cover w-100 h-100">
+                                    <img src="/assets/images/environmental-protection.webp" alt="Environmental Management ISO 14001 Recycling" class="object-fit-cover w-100 h-100">
                                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-to-t opacity-50" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
                                     <div class="position-absolute bottom-0 start-0 p-3 w-100 d-flex align-items-center justify-content-between z-2">
                                         <span class="badge bg-accent text-dark text-uppercase fw-semibold extra-small">ISO 14001 Certification</span>
