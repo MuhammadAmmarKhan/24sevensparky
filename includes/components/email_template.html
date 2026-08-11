@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24/7 Sparky Operational Notification</title>
+    <style>
+        /* Core Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td {
+            padding: 0;
+        }
+        img {
+            border: 0;
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f4f6f9;
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+        .main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Top Emergency Bar */
+        .top-bar {
+            background-color: #78c805;
+            color: #000000;
+            padding: 8px 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
+        .top-bar a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        /* Branding Header */
+        .header {
+            background-color: #ffffff;
+            padding: 30px 24px 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .logo-img {
+            margin: 0 auto;
+            max-height: 52px;
+            width: auto;
+        }
+
+        /* Dynamic Content Container */
+        .content {
+            padding: 32px 28px;
+            background-color: #ffffff;
+        }
+
+        /* Dynamic Component Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+        }
+        .badge-emergency { background-color: #ef4444; color: #ffffff; box-shadow: 0 0 12px rgba(239, 68, 68, 0.2); }
+        .badge-planner { background-color: #3b82f6; color: #ffffff; box-shadow: 0 0 12px rgba(59, 130, 246, 0.2); }
+        .badge-careers { background-color: #10b981; color: #ffffff; box-shadow: 0 0 12px rgba(16, 185, 129, 0.2); }
+        .badge-contact { background-color: #78c805; color: #000000; box-shadow: 0 0 12px rgba(120, 200, 5, 0.2); }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        .data-label {
+            padding: 12px 14px;
+            background-color: #f8fafc;
+            color: #64748b;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 35%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .data-value {
+            padding: 12px 14px;
+            background-color: #ffffff;
+            color: #0f172a;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #78c805;
+            color: #000000;
+            font-weight: 900;
+            font-size: 13px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(120, 200, 5, 0.3);
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #f8fafc;
+            padding: 30px 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+
+
+        /* Social Media Icons */
+        .social-container {
+            text-align: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+        }
+        .social-link {
+            display: inline-block;
+            margin: 0 10px 10px;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            color: #0f172a;
+            text-decoration: none;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .social-link img {
+            width: 18px;
+            height: 18px;
+            margin: 10px auto;
+        }
+
+        .footer-legal {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .footer-legal strong {
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="main-container">
+
+        <!-- TOP 24/7 EMERGENCY BAR -->
+        <div class="top-bar">
+            ⚡ 24/7 Emergency Dispatch Line: <a href="tel:0405005869">0405 005 869</a>
+        </div>
+
+        <!-- HEADER WITH LOGO ONLY -->
+        <div class="header">
+            <img src="/assets/images/logo-black.png" alt="24/7 Sparky Logo" class="logo-img">
+        </div>
+
+        <!-- DYNAMIC BODY CONTENT AREA -->
+        <div class="content">
+            {{body_content}}
+        </div>
+
+        <!-- FOOTER WITH VERIFIED CONTACT DETAILS & SOCIAL LINKS -->
+        <div class="footer">
+
+            <!-- SOCIAL MEDIA LINKS -->
+            <div class="social-container">
+                <a href="https://www.facebook.com/p/247-Sparky-PTY-LTD-61563577012636/" class="social-link" title="Facebook" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB">
+                </a>
+                <a href="https://wa.me/61405005869" class="social-link" title="WhatsApp" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                </a>
+                <a href="https://www.instagram.com" class="social-link" title="Instagram" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG">
+                </a>
+            </div>
+
+            <div class="footer-legal">
+                <p style="margin: 0 0 6px 0;"><strong>24/7 Sparky PTY LTD</strong> | Australia's #1 Rated Electrician Services</p>
+                <p style="margin: 0 0 6px 0;">Fast, Reliable & Trusted 24/7 Residential & Commercial Solutions</p>
+                <p style="margin: 0;">Automated Dispatch & Notification System</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

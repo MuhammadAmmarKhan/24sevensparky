@@ -1,0 +1,31 @@
+{
+  "short_name": "24/7 Sparky",
+  "name": "24/7 Sparky Oran Park | Emergency Electricians",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/icons/icon-512x512-maskable.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/?utm_source=pwa",
+  "background_color": "#0d0f12",
+  "theme_color": "#facc15",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["lifestyle", "utilities"],
+  "lang": "en-AU",
+  "description": "Oran Park and Western Sydney’s trusted 24/7 emergency electricians for residential and commercial electrical services."
+}
